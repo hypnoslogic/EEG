@@ -1,0 +1,41 @@
+<!--
+title: Start here
+nav: Start here
+description: An open, referenced tutorial for anaesthetists on reading the raw EEG, the spectrogram and processed EEG indices (Entropy, BIS, SedLine).
+reviewed: 2026-10-02
+-->
+<section class="hero wide">
+<h1>Read the brain, not just the number</h1>
+<p class="lede">A referenced, open tutorial for anaesthesia registrars, medical officers and consultants on the raw EEG, the spectrogram and the processed indices on GE Entropy, BIS and SedLine monitors.</p>
+<div class="hero-trace" role="img" aria-label="A synthetic frontal EEG trace changing from the small, fast waves of the awake brain to the large slow and alpha waves of propofol anaesthesia.">
+<svg viewBox="0 0 1200 140" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="<!--HEROPATH-->"/></svg>
+</div>
+<div class="trace-labels"><span>Awake: small, fast, irregular</span><span>Propofol: large slow waves with alpha riding on top</span></div>
+</section>
+
+<div class="prose">
+<h2>Why this exists</h2>
+<p>The brain is the target organ of every general anaesthetic, yet it is the organ we monitor least well. Most anaesthetists who use EEG monitors read only the index number. That number comes from a proprietary algorithm, lags several seconds behind the brain, is distorted by muscle activity, ketamine, nitrous oxide and age, and may miss burst suppression altogether{{cite:delphi2026,sbi2025}}. Every monitor already shows the raw trace and a spectrogram. Learning to read them takes training rather than new equipment{{cite:sbi2025}}.</p>
+<p>The approach here follows Purdon and colleagues: each anaesthetic drug acts on particular receptors in particular circuits, and so leaves its own signature in the EEG. You can learn to recognise these signatures and use them to titrate anaesthesia{{cite:purdon2015}}. Clinical applications come from Lee, Egan and Johnson{{cite:lee2021}}, updated with trials and reviews published since 2021.</p>
+
+<h2>How the course is organised</h2>
+<p>The learning outcomes come from the 2026 international Delphi consensus on EEG education in anaesthesiology{{cite:delphi2026}}. Each page lists the outcomes it covers, and the <a href="curriculum.html">curriculum map</a> shows all of them. The order of the pages follows the Safe Brain Initiative EEG boot camp{{cite:sbi2025}}: why monitor, what the monitor shows, how drugs, artefacts and nociception change it, how patients differ, and then putting it into practice.</p>
+<p>Content is tagged at two levels. {{basic}} is what every anaesthetist using an EEG monitor should know. {{adv}} is aimed at people who teach EEG, do research or want to go further.</p>
+
+<ol class="modules">
+<li><a href="fundamentals.html">Where the EEG comes from and how it is analysed</a><p>Neurophysiology, frequency bands, decibels, the spectrum, the spectrogram, median frequency and SEF95.</p></li>
+<li><a href="raw-eeg.html">Reading the raw EEG and recognising artefacts</a><p>Awake to isoelectric, the phases of an anaesthetic, burst suppression, and the ShARP approach to artefacts.</p></li>
+<li><a href="drug-signatures.html">Drug signatures</a><p>Propofol, the volatile agents, ketamine, dexmedetomidine and nitrous oxide, and why one index cannot describe them all.</p></li>
+<li><a href="processed-eeg.html">Processed EEG: Entropy, BIS and SedLine</a><p>What each monitor computes, what the numbers mean, and where they mislead.</p></li>
+<li><a href="in-theatre.html">Using EEG in theatre</a><p>Step-by-step approaches for induction, maintenance and emergence, plus nociception, the vulnerable brain, TIVA, haemodynamics and substance use.</p></li>
+<li><a href="evidence.html">The evidence</a><p>A living summary of the trials and meta-analyses on delirium, mortality and awareness.</p></li>
+<li><a href="under-the-hood.html">Under the hood</a><p>Window length and frequency resolution, how the figures were generated, and the companion real-time analysis script.</p></li>
+</ol>
+
+<h2>Before you start</h2>
+<div class="note key"><strong>Toggle the band definitions</strong>
+<p>Published sources draw the boundaries between frequency bands in different places. The switch at the top of every page changes all band tables and shaded figures between the anaesthesia-oriented scheme of Purdon et al. (2015), which is the default, and the scheme used by Lee et al. (2021). <a href="fundamentals.html#bands">Why they differ</a>.</p></div>
+<div class="note"><strong>About the images</strong>
+<p>Every EEG trace, spectrum and spectrogram on this site is synthetic. Each was generated to have the spectral shape described in the cited literature, so learners see clean examples, no patient data is involved, and every figure can be shared freely. Real clinical examples are linked from <a href="further-learning.html">Further learning</a>.</p></div>
+<p>This is a living resource. Each page shows the date it was last reviewed, and changes are logged on the <a href="roadmap.html">roadmap and changelog</a>.</p>
+</div>

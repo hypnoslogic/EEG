@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en-ZA" data-scheme="purdon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using EEG in theatre — EEG for Anaesthetists</title>
+<meta name="description" content="Step-by-step use of EEG at induction, maintenance and emergence; recognising nociception; the vulnerable brain; TIVA and awareness; haemodynamics; substance use.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var s=localStorage.getItem("eeg-scheme");if(s==="lee"||s==="purdon")document.documentElement.dataset.scheme=s;}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <a class="brand" href="index.html">EEG for Anaesthetists <span>· an open teaching resource</span></a>
+  <div class="scheme">
+    <span id="scheme-label">Band definitions</span>
+    <div role="radiogroup" aria-labelledby="scheme-label">
+      <button type="button" role="radio" data-scheme-btn="purdon" aria-checked="true">Purdon 2015</button>
+      <button type="button" role="radio" data-scheme-btn="lee" aria-checked="false">Lee 2021</button>
+    </div>
+  </div>
+  <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu</button>
+</header>
+<div class="layout">
+<nav class="site-nav" id="site-nav" aria-label="Site"><ul><li><a href="index.html">Start here</a></li></ul><h2>Course</h2><ol><li><a href="fundamentals.html">Fundamentals</a></li><li><a href="raw-eeg.html">Raw EEG &amp; artefacts</a></li><li><a href="drug-signatures.html">Drug signatures</a></li><li><a href="processed-eeg.html">Processed EEG</a></li><li><a href="in-theatre.html" aria-current="page">Using EEG in theatre</a></li><li><a href="evidence.html">Evidence</a></li><li><a href="under-the-hood.html">Under the hood</a></li></ol><h2>Reference</h2><ul><li><a href="curriculum.html">Curriculum map</a></li><li><a href="further-learning.html">Further learning</a></li><li><a href="references.html">References</a></li><li><a href="roadmap.html">Roadmap &amp; changelog</a></li><li><a href="about.html">About &amp; contributing</a></li></ul></nav>
+<main id="main">
+<article class="prose-root">
+
+<h1>Using EEG in theatre</h1>
+<p class="meta">Module 5 · about 30 minutes · <span class="lvl basic">Basic</span></p>
+
+<section class="objectives" aria-labelledby="obj">
+<h2 id="obj">By the end of this page you should be able to</h2>
+<ul>
+<li>Integrate EEG monitoring into the whole anaesthetic, from baseline to emergence. <span class="lo">Delphi <a href="curriculum.html#AM1">AM1</a></span> <span class="lo">Delphi <a href="curriculum.html#FD8">FD8</a></span></li>
+<li>Use the EEG to avoid both inadequate and excessive anaesthesia. <span class="lo">Delphi <a href="curriculum.html#AM2">AM2</a></span></li>
+<li>Recognise nociception-related EEG patterns and interpret them alongside clinical signs. <span class="lo">Delphi <a href="curriculum.html#NC11">NC11</a></span> <span class="lo">Delphi <a href="curriculum.html#NC12">NC12</a></span></li>
+<li>Adjust management for older, younger and individually variable patients, and identify those at risk of neurocognitive problems. <span class="lo">Delphi <a href="curriculum.html#PV1">PV1</a></span> <span class="lo">Delphi <a href="curriculum.html#PV2">PV2</a></span> <span class="lo">Delphi <a href="curriculum.html#PV3">PV3</a></span> <span class="lo">Delphi <a href="curriculum.html#PV6">PV6</a></span> <span class="lo">Delphi <a href="curriculum.html#PV10">PV10</a></span> <span class="lo">Delphi <a href="curriculum.html#PV11">PV11</a></span></li>
+<li>Communicate EEG findings clearly to the team. <span class="lo">Delphi <a href="curriculum.html#AM3">AM3</a></span></li>
+</ul>
+</section>
+
+<p>The boot camp turns its teaching into simple, problem-based algorithms that clinicians can use straight away<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>. This page follows the same approach, and draws on Lee et al. for the clinical scenarios<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>.</p>
+
+<h2>Which patients?</h2>
+<p>Lee et al. describe four settings where pEEG monitoring is likely to be most useful<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>:</p>
+<ul>
+<li><strong>TIVA with neuromuscular block</strong>, where there is no end-tidal concentration to confirm drug delivery and no movement to warn you.</li>
+<li><strong>The vulnerable brain</strong>: older or frail patients, cerebrovascular disease, intracranial pathology, severe systemic illness.</li>
+<li><strong>Haemodynamic instability</strong>, to help decide between changing the anaesthetic depth and giving vasoactive drugs or fluid.</li>
+<li><strong>Known or suspected substance use</strong>, where anaesthetic requirements are hard to predict.</li>
+</ul>
+<p>An expert consensus statement recommended end-tidal gas monitoring with alarms, <em>or</em> pEEG, to reduce the risk of awareness with recall in patients receiving general anaesthesia<sup class="ref">[<a href="references.html#r-poqi2020" title="Chan MTV, Hedrick TL, Egan TD, et al. American Society for Enhanced Recovery and Perioperative Quality Initiative joint consensus statement ">19</a>]</sup>. The guideline landscape is summarised on the <a href="evidence.html#guidelines">evidence page</a>.</p>
+
+<h2>Phase by phase</h2>
+<h3>Before induction</h3>
+<ol class="algo">
+<li>Apply the sensor, check impedance and SQI, and confirm the raw trace looks clean (<a href="raw-eeg.html">Module 2</a>).</li>
+<li>Record the awake baseline. Note the amplitude. Is this an older or frail brain with little alpha to start with?</li>
+<li>Decide which pattern you will aim for given the drugs you plan to use (<a href="drug-signatures.html">Module 3</a>).</li>
+</ol>
+<h3>Induction</h3>
+<ol class="algo">
+<li>Watch the raw trace, not the index. The index lags. Slow-delta waves appearing within 10–30 s of a propofol bolus fits with loss of consciousness<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>.</li>
+<li>If burst suppression appears after a standard dose, especially in an older patient, this patient is sensitive. Note it and reduce what follows<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>,<a href="references.html#r-fritz2018" title="Fritz BA, Maybrier HR, Avidan MS. Intraoperative electroencephalogram suppression at lower volatile anaesthetic concentrations predicts post">28</a>]</sup>.</li>
+<li>Expect a brief arousal pattern at laryngoscopy and intubation (see nociception, below).</li>
+</ol>
+<h3>Maintenance: too light, about right or too deep?</h3>
+<p>The boot camp frames the core decision as three questions: is the patient too light, about right, or too deep<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>? For propofol and the volatile agents:</p>
+<div class="decision">
+<div><h4>Possibly too light</h4><p>Alpha fading. Beta (and gamma) rising. SEF95 and index climbing. The raw trace getting smaller and faster.</p><p><strong>First rule out</strong> EMG, nociception, ketamine or N₂O, and artefact. <strong>Then check delivery:</strong> pump, line, cannula, vaporiser.</p></div>
+<div><h4>About right</h4><p>Robust slow-delta plus a clear frontal alpha band. Theta filling in if on 1 MAC or more of volatile. No suppression. Index in the device's usual range.</p><p>Hold steady. Reassess at every change in stimulus or drug.</p></div>
+<div><h4>Possibly too deep</h4><p>Any suppression: flat stretches, stripes on the DSA, SR above 0. Alpha power falling. Very low index or SEF.</p><p>Reduce the hypnotic if haemodynamics and surgery allow. Look for other causes: hypotension, hypothermia, ischaemia.</p></div>
+</div>
+
+<h3 id="nociception">Nociception or too light?</h3>
+<p>"Depth" is not one dimension. Hypnosis versus arousal and nociception versus antinociception are separate, though connected, axes. The cortical EEG mostly reports the hypnotic axis. Nociception is processed mainly in the spinal cord and subcortical structures, but as an arousing stimulus it can show up <em>indirectly</em> in the EEG<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>:</p>
+<ul>
+<li><strong>Alpha drop-out:</strong> the frontal alpha band weakens or disappears.</li>
+<li><strong>Beta arousal:</strong> beta activity increases, and SEF and the index rise.</li>
+<li><strong>"Paradoxical" delta arousal:</strong> slow-delta power <em>increases</em> after a stimulus. It can be mistaken for deepening.</li>
+</ul>
+<figure class="fig-wide"><img src="img/nociception.png" alt="Two DSAs during a surgical stimulus: one shows loss of the alpha band with a burst of beta, the other an increase in delta power" loading="lazy"><figcaption><strong>EEG responses to a noxious stimulus</strong> (red bar). Left: alpha drop-out with beta arousal. Right: paradoxical delta arousal. Patterns as described in the boot camp's nociception teaching<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>.<span class="synthetic"> Synthetic signal generated for teaching (<a href="under-the-hood.html#figures">how</a>).</span></figcaption></figure>
+<ol class="algo">
+<li><strong>Is there a stimulus?</strong> Incision, traction, laryngoscopy, pinning, a tourniquet?</li>
+<li><strong>Look at the rest of the picture</strong>: heart rate, blood pressure, movement, tearing, sweating, pupils. EEG changes must be interpreted together with clinical signs<sup class="ref">[<a href="references.html#r-delphi2026" title="Berger-Estilita J, Baron Shahaf D, Barreto Chang OL, et al. Consensus document on electroencephalography education in anaesthesiology: defin">3</a>]</sup>.</li>
+<li><strong>If the pattern fits nociception, treat nociception first.</strong> Give analgesia: an opioid bolus, a block or local anaesthetic. If you only deepen the hypnotic, you risk going too deep once the stimulus stops.</li>
+<li><strong>If there is no stimulus and alpha has gone</strong>, check drug delivery before anything else. In one published case, a propofol infusion that had been interrupted during spine surgery first showed itself as loss of the alpha band on the spectrogram, before the index changed<sup class="ref">[<a href="references.html#r-alphacase2021" title="Loss of spectral alpha power during spine surgery: what could be wrong? J Clin Monit Comput. 2021;35(6):1531–1533. [Case report; full author">45</a>]</sup>.</li>
+</ol>
+
+<h3>Emergence</h3>
+<ol class="algo">
+<li>After turning off the anaesthetic, expect the zipper on the DSA: slow-delta and alpha fade, and beta and gamma return<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>.</li>
+<li>If you switched to high-flow N₂O, do not be alarmed by a transient large slow-delta wave in the first few minutes<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>.</li>
+<li>Watch the path through emergence. Patterns that skip the usual alpha-rich stage were associated with delirium in the recovery room, and this was more pronounced with ketamine or N₂O<sup class="ref">[<a href="references.html#r-hesse2019" title="Hesse S, Kreuzer M, Hight D, et al. Association of electroencephalogram trajectories during emergence from anaesthesia with delirium in the ">29</a>]</sup>. At present this is a reason for closer observation, not a validated intervention.</li>
+</ol>
+
+<h2 id="vulnerable">The vulnerable brain</h2>
+<p>"Vulnerable brain" describes patients who may be unusually sensitive to anaesthetics or at risk of postoperative neurocognitive problems: advanced age, neurovascular disease, intracranial pathology, traumatic brain injury, or severe infection or metabolic disturbance<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>.</p>
+<figure class="fig-wide"><img data-show-scheme="purdon" src="img/age_purdon.png" alt="Spectra of a young and an old patient on the same propofol dose. The older patient has lower power across all bands, with the alpha peak most reduced (Purdon band definitions)" loading="lazy"><img data-show-scheme="lee" src="img/age_lee.png" alt="Spectra of a young and an old patient on the same propofol dose. The older patient has lower power across all bands, with the alpha peak most reduced (Lee band definitions)" loading="lazy"><figcaption><strong>Age changes the EEG under anaesthesia.</strong> Power falls in every band with age, and alpha falls most. The raw amplitude is visibly lower. Illustrating the findings of Purdon et al. 2015 (ageing)<sup class="ref">[<a href="references.html#r-purdon2015age" title="Purdon PL, Pavone KJ, Akeju O, et al. The ageing brain: age-dependent changes in the electroencephalogram during propofol and sevoflurane ge">26</a>]</sup>.<span class="synthetic"> Synthetic signal generated for teaching (<a href="under-the-hood.html#figures">how</a>).</span></figcaption></figure>
+<ul>
+<li>EEG power falls in every band with age, <strong>alpha most of all</strong>, and burst suppression is more common in older patients<sup class="ref">[<a href="references.html#r-purdon2015age" title="Purdon PL, Pavone KJ, Akeju O, et al. The ageing brain: age-dependent changes in the electroencephalogram during propofol and sevoflurane ge">26</a>]</sup>.</li>
+<li>In one analysis, each 1 dB fall in frontal alpha power increased the odds of burst suppression 1.33-fold. The authors proposed low frontal alpha as an EEG phenotype of the vulnerable brain<sup class="ref">[<a href="references.html#r-shao2020" title="Shao YR, Kahali P, Houle TT, et al. Low frontal alpha power is associated with the propensity for burst suppression: an electroencephalogram">25</a>]</sup>.</li>
+<li>Lower intraoperative frontal alpha power correlated with poorer preoperative cognitive function in a small study of older adults<sup class="ref">[<a href="references.html#r-giattino2017" title="Giattino CM, Gardner JE, Sbahi FM, et al. Intraoperative frontal alpha-band power correlates with preoperative neurocognitive function in ol">30</a>]</sup>.</li>
+<li>More intraoperative burst suppression has been associated with more postoperative delirium. Suppression occurring at <em>low</em> volatile concentrations was a particularly strong predictor, suggesting it marks a sensitive brain<sup class="ref">[<a href="references.html#r-fritz2016" title="Fritz BA, Kalarickal PL, Maybrier HR, et al. Intraoperative electroencephalogram suppression predicts postoperative delirium. Anesth Analg. ">27</a>,<a href="references.html#r-fritz2018" title="Fritz BA, Maybrier HR, Avidan MS. Intraoperative electroencephalogram suppression at lower volatile anaesthetic concentrations predicts post">28</a>]</sup>.</li>
+</ul>
+<div class="note evidence"><strong>Association, not proof</strong>
+<p>These are associations. Whether <em>preventing</em> suppression reduces delirium is still uncertain. The trials disagree (<a href="evidence.html">Module 6</a>). Sensible practice is to avoid excessive anaesthesia, treat physiological and metabolic problems promptly, and use the EEG as one part of a wider approach to perioperative brain health<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>.</p></div>
+<p><strong>Practical points for older patients:</strong> start with lower doses. Look for suppression early and often in the raw trace, because automated detection may miss low-voltage suppression<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>. Remember the index is not age-adjusted<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>, and a small alpha band may be normal for this patient. Treat early suppression at modest doses as a sign of sensitivity.</p>
+<p><strong>Children:</strong> the EEG develops with age, and adult-derived indices are less reliable in children<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>. Even so, a 2026 meta-analysis of nine RCTs found less emergence delirium with EEG-guided anaesthesia in children (<a href="evidence.html">Module 6</a>)<sup class="ref">[<a href="references.html#r-haidar2026" title="Haidar L, Abadi F, Sarieddine T, Vitali A, Zouein FA, Massoud G. EEG-guided anesthesia for the prevention of emergence delirium in children:">10</a>]</sup>. A paediatric section is planned.</p>
+<p><strong>Every patient varies</strong>, not only the old and the young. Use each patient's own baseline and response as the reference, rather than a population number (<span class="lo">Delphi <a href="curriculum.html#PV6">PV6</a></span>).</p>
+
+<h2 id="tiva">TIVA, neuromuscular block and awareness</h2>
+<p>With a volatile agent, the end-tidal concentration confirms the drug is reaching the patient. With TIVA there is no such check. Disconnections, tissued cannulas, empty syringes and pump errors can go unnoticed, and neuromuscular block removes movement as a warning sign<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>.</p>
+<ul>
+<li>In the UK's NAP5 audit, which relied on patients reporting awareness spontaneously, the overall incidence was about 1 in 19,000. It was 1 in 14,000 with TIVA, and about 1 in 8,300 with TIVA plus neuromuscular block. NAP5 judged that many TIVA cases were avoidable and related to drug delivery, and suggested pEEG for TIVA with block<sup class="ref">[<a href="references.html#r-nap5" title="Pandit JJ, Andrade J, Bogod DG, et al. 5th National Audit Project (NAP5) on accidental awareness during general anaesthesia: summary of main">20</a>,<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>.</li>
+<li>A prospective study that interviewed every patient found a much higher rate, about 1%. The difference shows how much depends on how awareness is detected<sup class="ref">[<a href="references.html#r-errando2008" title="Errando CL, Sigl JC, Robles M, et al. Awareness with recall during general anaesthesia: a prospective observational evaluation of 4001 patie">21</a>]</sup>.</li>
+<li>Propofol requirements vary widely between patients. Target-controlled infusion targets of roughly 3–6 µg/mL are commonly quoted, adjusted for opioid co-administration, anxiety and frailty<sup class="ref">[<a href="references.html#r-nimmo2019" title="Nimmo AF, Absalom AR, Bagshaw O, et al. Guidelines for the safe practice of total intravenous anaesthesia (TIVA): joint guidelines from the ">24</a>,<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>.</li>
+</ul>
+<div class="note key"><strong>TIVA with neuromuscular block: a checklist</strong>
+<p>Keep the cannula visible, check the pump and line regularly, and watch the raw EEG and DSA continuously, not only the index. A loss of alpha with a rise in beta, with no surgical stimulus to explain it, means check the propofol first<sup class="ref">[<a href="references.html#r-alphacase2021" title="Loss of spectral alpha power during spine surgery: what could be wrong? J Clin Monit Comput. 2021;35(6):1531–1533. [Case report; full author">45</a>]</sup>.</p></div>
+
+<h2 id="haemodynamics">Haemodynamics: change the anaesthetic or support the circulation?</h2>
+<p>When blood pressure moves, the right response may be to change anaesthetic depth, to give a vasoactive drug or fluid, or both. Lee et al. propose using the pEEG to help decide<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>. The table below is adapted from their decision matrix. It is based on expert opinion with limited supporting evidence.</p>
+<div class="table-wrap">
+<table>
+<caption>Adapted from Lee et al. 2021 (CC BY-NC 4.0)<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>. Three cells follow their text directly: high pressure with a deep EEG, low pressure with a deep EEG, and low pressure with a light EEG. The remaining cells are this site's extrapolation. Compare with their <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8648516/figure/f2-kja-21349/">original Fig. 2</a>. Interpret the index together with the raw EEG and DSA.</caption>
+<thead><tr><th>Blood pressure ↓ / EEG depth →</th><th>Light (high index, no slow-delta plus alpha)</th><th>About right</th><th>Deep (low index, suppression)</th></tr></thead>
+<tbody>
+<tr><th>High</th><td>Deepen the anaesthetic and/or give analgesia</td><td>Consider analgesia, then an antihypertensive</td><td>Antihypertensive. More anaesthetic would only make the patient deeper and slow emergence</td></tr>
+<tr><th>Normal</th><td>Deepen the anaesthetic</td><td>No change</td><td>Reduce the anaesthetic</td></tr>
+<tr><th>Low</th><td>Support the circulation first (vasopressor, fluid), then reassess depth</td><td>Vasopressor and/or fluid</td><td>Reduce the anaesthetic <em>and</em> support the circulation</td></tr>
+</tbody></table></div>
+<ul>
+<li><strong>The "triple low"</strong> (mean arterial pressure under 80 mmHg, BIS under 40 and MAC under 0.8) was associated with longer stay and higher mortality in a large retrospective analysis<sup class="ref">[<a href="references.html#r-sessler2012" title="Sessler DI, Sigl JC, Kelley SD, et al. Hospital stay and mortality are increased in patients having a “triple low” of low blood pressure, lo">31</a>]</sup>. In a later real-time randomised trial, alerting clinicians to triple lows did not reduce mortality. Clinicians ignored about half of the alerts, so the trial could not properly test the idea<sup class="ref">[<a href="references.html#r-sessler2019" title="Sessler DI, Turan A, Stapelfeldt WH, et al. Triple-low alerts do not reduce mortality: a real-time randomized trial. Anesthesiology. 2019;13">32</a>,<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>.</li>
+<li><strong>Haemorrhage:</strong> shock shrinks the volume of distribution and slows clearance, so normal doses of intravenous anaesthetic give higher concentrations and deeper effect<sup class="ref">[<a href="references.html#r-egan2020" title="Egan ED, Johnson KB. The influence of hemorrhagic shock on the disposition and effects of intravenous anesthetics: a narrative review. Anest">34</a>]</sup>. In one case report, BIS fell <em>before</em> the blood pressure crisis during major haemorrhage under propofol TIVA<sup class="ref">[<a href="references.html#r-honan2002" title="Honan DM, Breen PJ, Boylan JF, McDonald NJ, Egan TD. Decrease in bispectral index preceding intraoperative hemodynamic crisis: evidence of a">33</a>]</sup>. A falling index or new suppression during bleeding is a reason to reduce the anaesthetic.</li>
+</ul>
+
+<h2 id="substance">Patients who use substances</h2>
+<p>Requirements can be higher or lower than expected, and the EEG gives you a patient-specific guide<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>:</p>
+<ul>
+<li><strong>Chronic opioid use:</strong> perhaps unexpectedly, chronic opioid users needed <em>less</em> end-tidal sevoflurane to keep BIS below 50 (0.84% vs 1.18%) in the absence of surgical stimulation<sup class="ref">[<a href="references.html#r-oh2017" title="Oh TK, Eom W, Yim J, et al. The effect of chronic opioid use on end-tidal concentration of sevoflurane necessary to maintain a bispectral in">35</a>]</sup>. Chronic pain may also alter theta-band activity, with uncertain clinical meaning<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>.</li>
+<li><strong>Buprenorphine:</strong> current advice is generally to continue it through the perioperative period. Expect altered interactions with full agonists and titrate to effect, using pEEG and end-tidal monitoring<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>.</li>
+<li><strong>Alcohol:</strong> acute intoxication slows the EEG and BIS fell as blood alcohol rose<sup class="ref">[<a href="references.html#r-gerstman2015" title="Gerstman MD, Merry AF, McIlroy DR, et al. Acute alcohol intoxication and bispectral index monitoring. Acta Anaesthesiol Scand. 2015;59(8):10">36</a>]</sup>. Chronic heavy drinkers needed more propofol for induction (about 2.7 vs 2.2 mg/kg) and for maintenance<sup class="ref">[<a href="references.html#r-fassoulaki1993" title="Fassoulaki A, Farinotti R, Servin F, Desmonts JM. Chronic alcoholism increases the induction dose of propofol in humans. Anesth Analg. 1993;">37</a>]</sup>.</li>
+</ul>
+
+<h2>Communicating EEG findings</h2>
+<p>Describe what you see, what you think it means and what you will do, in that order (<span class="lo">Delphi <a href="curriculum.html#AM3">AM3</a></span>). For example:</p>
+<blockquote><p>"The frontal alpha has gone and there's new beta since they started the retraction. The index has gone from 42 to 58 over two minutes. Heart rate is up as well. I think this is nociception rather than light anaesthesia, so I'm giving remifentanil and holding the propofol."</p></blockquote>
+<p>At handover, include the EEG pattern, any burst suppression or sensitivity seen at induction, and the drug or doses that produced a stable pattern.</p>
+
+</article>
+<nav class="pager" aria-label="Course pages"><a href="processed-eeg.html"><span>Previous</span>Processed EEG: Entropy, BIS and SedLine</a><a href="evidence.html" style="text-align:right"><span>Next</span>The evidence</a></nav>
+</main>
+</div>
+<footer class="site-foot">
+  <p>For education only. This is not a clinical protocol and does not replace your monitor's instructions for use, your department's guidelines or clinical judgement. Every EEG image on this site is synthetic unless stated otherwise.</p>
+  <p>Page last reviewed 2026-10-02. Content licensed <a href="about.html#licence">CC BY-NC-SA 4.0</a>. Found an error or new evidence? See <a href="about.html#contribute">how to contribute</a>.</p>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

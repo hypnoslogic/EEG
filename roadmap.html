@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-ZA" data-scheme="purdon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roadmap and changelog — EEG for Anaesthetists</title>
+<meta name="description" content="Planned features and content, items awaiting review, and a log of changes to this resource.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var s=localStorage.getItem("eeg-scheme");if(s==="lee"||s==="purdon")document.documentElement.dataset.scheme=s;}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <a class="brand" href="index.html">EEG for Anaesthetists <span>· an open teaching resource</span></a>
+  <div class="scheme">
+    <span id="scheme-label">Band definitions</span>
+    <div role="radiogroup" aria-labelledby="scheme-label">
+      <button type="button" role="radio" data-scheme-btn="purdon" aria-checked="true">Purdon 2015</button>
+      <button type="button" role="radio" data-scheme-btn="lee" aria-checked="false">Lee 2021</button>
+    </div>
+  </div>
+  <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu</button>
+</header>
+<div class="layout">
+<nav class="site-nav" id="site-nav" aria-label="Site"><ul><li><a href="index.html">Start here</a></li></ul><h2>Course</h2><ol><li><a href="fundamentals.html">Fundamentals</a></li><li><a href="raw-eeg.html">Raw EEG &amp; artefacts</a></li><li><a href="drug-signatures.html">Drug signatures</a></li><li><a href="processed-eeg.html">Processed EEG</a></li><li><a href="in-theatre.html">Using EEG in theatre</a></li><li><a href="evidence.html">Evidence</a></li><li><a href="under-the-hood.html">Under the hood</a></li></ol><h2>Reference</h2><ul><li><a href="curriculum.html">Curriculum map</a></li><li><a href="further-learning.html">Further learning</a></li><li><a href="references.html">References</a></li><li><a href="roadmap.html" aria-current="page">Roadmap &amp; changelog</a></li><li><a href="about.html">About &amp; contributing</a></li></ul></nav>
+<main id="main">
+<article class="prose-root">
+
+<h1>Roadmap and changelog</h1>
+<p class="lede">This is a living resource. This page lists what is planned, what is waiting for review, and what has changed.</p>
+
+<h2>Awaiting review before inclusion</h2>
+<p>These have been identified but not yet incorporated. Each needs the curator's approval.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Item</th><th>Why it might be added</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>SASA Practice Guidelines 2022 (South African Society of Anaesthesiologists), published in the Southern African Journal of Anaesthesia and Analgesia</td><td>National practice guidelines covering monitoring. Their wording on depth-of-anaesthesia monitoring needs to be checked</td><td>Awaiting review</td></tr>
+<tr><td>Sneyd JR. Depth-of-anaesthesia monitoring. SASA refresher course text, SAJAA 2012;18(1):27–29 (CC BY 4.0)</td><td>A South African teaching text, though now dated</td><td>Awaiting review</td></tr>
+<tr><td>Association of Anaesthetists: Recommendations for standards of monitoring during anaesthesia and recovery 2021 (Klein et al., <em>Anaesthesia</em>)</td><td>An international standard with updated indications for pEEG</td><td>Awaiting review</td></tr>
+<tr><td>APSF-endorsed statement on revising patient monitoring recommendations (2022)</td><td>Proposes EEG-based monitoring with neuromuscular block during TIVA, and during volatile anaesthesia when 0.7 MAC cannot be maintained</td><td>Awaiting review</td></tr>
+<tr><td>ESAIC guideline on postoperative delirium (2024 update) and other sources cited by the Delphi and boot camp papers, for example on nociception, burst-suppression detection and age effects on indices</td><td>Would strengthen Modules 2, 4 and 5</td><td>Awaiting review</td></tr>
+<tr><td>Purdon et al., <em>Clinical EEG for anesthesiologists</em>, Part II (patient management and drug combinations)</td><td>Fills the drug-combination gap in Module 3</td><td>Awaiting review</td></tr>
+</tbody></table></div>
+
+<h2>Planned features</h2>
+<ul>
+<li><strong>Interactive "build a spectrum" demo.</strong> Mix slow, delta, theta, alpha and beta with sliders and watch the raw trace, spectrum and DSA change. The site is static for now.</li>
+<li><strong>Quizzes and flashcards</strong> for drug signatures and artefacts (<span class="lo">Delphi <a href="curriculum.html#CI5">CI5</a></span>), following the boot camp's quiz rounds<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>.</li>
+<li><strong>ICU sedation section</strong>, using the international expert consensus on pEEG-guided sedation in critically ill adults<sup class="ref">[<a href="references.html#r-rasulo2023" title="Rasulo FA, Hopkins P, Lobo FA, et al. Processed electroencephalogram-based monitoring to guide sedation in critically ill adult patients: re">46</a>]</sup>. This mirrors the boot camp's "transfer from theatre to ICU" block<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>.</li>
+<li><strong>Real clinical cases</strong> (<span class="lo">Delphi <a href="curriculum.html#CI1">CI1</a></span> <span class="lo">Delphi <a href="curriculum.html#CI2">CI2</a></span>): de-identified EEG recordings, for example logged with the companion script, with consent and ethics approval, shown alongside annotated monitor screenshots.</li>
+<li><strong>Paediatric module</strong>: age-dependent EEG patterns and the emergence delirium evidence<sup class="ref">[<a href="references.html#r-haidar2026" title="Haidar L, Abadi F, Sarieddine T, Vitali A, Zouein FA, Massoud G. EEG-guided anesthesia for the prevention of emergence delirium in children:">10</a>]</sup>.</li>
+<li><strong>Advanced topics</strong>: epileptiform activity (<span class="lo">Delphi <a href="curriculum.html#AC7">AC7</a></span>), multitaper spectra, burst suppression probability.</li>
+<li><strong>Update mechanism</strong> (<span class="lo">Delphi <a href="curriculum.html#PL4">PL4</a></span>): a six-monthly evidence search, and an "evidence watch" list of registered trials.</li>
+</ul>
+
+<h2 id="changelog">Changelog</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Date</th><th>Version</th><th>Change</th></tr></thead>
+<tbody>
+<tr><td>2026-10-02</td><td>0.1</td><td>First release: seven modules, curriculum map (Delphi 2026), evidence summary to October 2026, synthetic figures in both band schemes, build system and references database.</td></tr>
+</tbody></table></div>
+
+</article>
+
+</main>
+</div>
+<footer class="site-foot">
+  <p>For education only. This is not a clinical protocol and does not replace your monitor's instructions for use, your department's guidelines or clinical judgement. Every EEG image on this site is synthetic unless stated otherwise.</p>
+  <p>Page last reviewed 2026-10-02. Content licensed <a href="about.html#licence">CC BY-NC-SA 4.0</a>. Found an error or new evidence? See <a href="about.html#contribute">how to contribute</a>.</p>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

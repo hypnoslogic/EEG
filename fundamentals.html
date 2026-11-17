@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en-ZA" data-scheme="purdon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where the EEG comes from and how it is analysed — EEG for Anaesthetists</title>
+<meta name="description" content="Neurophysiology of the scalp EEG, frequency bands, power and decibels, the spectrum, the density spectral array, median frequency and SEF95.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var s=localStorage.getItem("eeg-scheme");if(s==="lee"||s==="purdon")document.documentElement.dataset.scheme=s;}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <a class="brand" href="index.html">EEG for Anaesthetists <span>· an open teaching resource</span></a>
+  <div class="scheme">
+    <span id="scheme-label">Band definitions</span>
+    <div role="radiogroup" aria-labelledby="scheme-label">
+      <button type="button" role="radio" data-scheme-btn="purdon" aria-checked="true">Purdon 2015</button>
+      <button type="button" role="radio" data-scheme-btn="lee" aria-checked="false">Lee 2021</button>
+    </div>
+  </div>
+  <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu</button>
+</header>
+<div class="layout">
+<nav class="site-nav" id="site-nav" aria-label="Site"><ul><li><a href="index.html">Start here</a></li></ul><h2>Course</h2><ol><li><a href="fundamentals.html" aria-current="page">Fundamentals</a></li><li><a href="raw-eeg.html">Raw EEG &amp; artefacts</a></li><li><a href="drug-signatures.html">Drug signatures</a></li><li><a href="processed-eeg.html">Processed EEG</a></li><li><a href="in-theatre.html">Using EEG in theatre</a></li><li><a href="evidence.html">Evidence</a></li><li><a href="under-the-hood.html">Under the hood</a></li></ol><h2>Reference</h2><ul><li><a href="curriculum.html">Curriculum map</a></li><li><a href="further-learning.html">Further learning</a></li><li><a href="references.html">References</a></li><li><a href="roadmap.html">Roadmap &amp; changelog</a></li><li><a href="about.html">About &amp; contributing</a></li></ul></nav>
+<main id="main">
+<article class="prose-root">
+
+<h1>Where the EEG comes from and how it is analysed</h1>
+<p class="meta">Module 1 · about 20 minutes · <span class="lvl basic">Basic</span> with one <span class="lvl adv">Advanced</span> section</p>
+
+<section class="objectives" aria-labelledby="obj">
+<h2 id="obj">By the end of this page you should be able to</h2>
+<ul>
+<li>Describe what the EEG measures and where the signal is generated. <span class="lo">Delphi <a href="curriculum.html#FD1">FD1</a></span> <span class="lo">Delphi <a href="curriculum.html#FD2">FD2</a></span></li>
+<li>Explain why the brain is worth monitoring during anaesthesia. <span class="lo">Delphi <a href="curriculum.html#FD3">FD3</a></span></li>
+<li>Name the frequency bands and explain power, decibels and frontal alpha. <span class="lo">Delphi <a href="curriculum.html#PV8">PV8</a></span></li>
+<li>Read a power spectrum and a density spectral array (DSA). <span class="lo">Delphi <a href="curriculum.html#PR3">PR3</a></span></li>
+<li>Relate EEG signatures to their clinical meaning. <span class="lo">Delphi <a href="curriculum.html#FD13">FD13</a></span></li>
+</ul>
+</section>
+
+<h2>Why monitor the brain?</h2>
+<p>Every hypnotic we give acts on the brain, but standard monitoring tracks the heart, the lungs and the anaesthetic delivered, not its effect on the brain. End-tidal concentration tells you what is in the alveoli. A TCI pump tells you what a model predicts. Neither tells you how this patient's brain is responding.</p>
+<p>The aims of EEG monitoring have changed over time. In the past the main aim was to prevent awareness. More recently, attention has turned to avoiding unnecessarily deep anaesthesia, especially in older and vulnerable patients<sup class="ref">[<a href="references.html#r-delphi2026" title="Berger-Estilita J, Baron Shahaf D, Barreto Chang OL, et al. Consensus document on electroencephalography education in anaesthesiology: defin">3</a>]</sup>. In practice the EEG helps with three questions: is this patient too light, about right, or too deep<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>?</p>
+
+<h2>What the EEG actually measures</h2>
+<p>Neurons communicate with action potentials, and synaptic activity produces small extracellular currents. In the cortex, pyramidal neurons line up in parallel with their dendrites pointing towards the surface. That geometry makes them act like an antenna: when many of them are active in synchrony, their fields add up into potentials large enough to be recorded through skull and scalp<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>.</p>
+<p>Deeper structures such as the thalamus produce much smaller signals at the scalp, because field strength falls with the square of the distance from the source. Cortex, thalamus and the brainstem arousal centres are densely interconnected, though, so the scalp EEG still reflects what these deeper circuits are doing to the cortex<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>.</p>
+<div class="note key"><strong>The central idea</strong>
+<p>Anaesthetics do not simply switch the cortex off. They induce large, organised oscillations that disrupt normal communication between brain regions. Under anaesthesia these oscillations can be 5 to 20 times larger in amplitude than the awake EEG, which is why they are easy to see<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>.</p></div>
+<p>Commercial anaesthesia monitors record from a few electrodes on the forehead, so what you see is mostly <em>frontal</em> cortex<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>. This matters for propofol and the volatile agents. In the awake brain, alpha rhythm sits over the back of the head. On loss of consciousness, alpha power shifts forward to the frontal lobes and becomes highly coherent, a change called <em>anteriorisation</em>. On emergence it moves back<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>. Frontal alpha on the monitor therefore suggests an anaesthetised brain, not a relaxed awake one.</p>
+
+<h2 id="bands">Frequency bands</h2>
+<p>EEG rhythms are named by frequency in hertz (cycles per second). The names are conventions, and different sources put the boundaries in slightly different places. Use the switch at the top of the page to compare the two schemes used on this site.</p>
+
+<div class="table-wrap" data-show-scheme="purdon">
+<table>
+<caption>Purdon et al. 2015, Table 1<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>. The published ranges are integers with small gaps (for example 4–5 Hz). Shaded figures on this site use the continuous edges 1, 4, 8, 12 and 25 Hz.</caption>
+<thead><tr><th>Band</th><th class="num">Range (Hz)</th><th>Typical anaesthetic meaning</th></tr></thead>
+<tbody>
+<tr><td><span class="band b-slow" aria-hidden="true"></span>Slow</td><td class="num">&lt; 1</td><td>Propofol and volatile unconsciousness, deep dexmedetomidine, the N₂O transition</td></tr>
+<tr><td><span class="band b-delta" aria-hidden="true"></span>Delta</td><td class="num">1–4</td><td>Usually moves together with slow waves ("slow-delta")</td></tr>
+<tr><td><span class="band b-theta" aria-hidden="true"></span>Theta</td><td class="num">5–8</td><td>Fills in when volatile agents reach about 1 MAC or more</td></tr>
+<tr><td><span class="band b-alpha" aria-hidden="true"></span>Alpha</td><td class="num">9–12</td><td>Coherent frontal alpha of GABAergic unconsciousness. Dexmedetomidine spindles also fall around here</td></tr>
+<tr><td><span class="band b-beta" aria-hidden="true"></span>Beta</td><td class="num">13–25</td><td>Awake, sedation, paradoxical excitation, arousal</td></tr>
+<tr><td><span class="band b-gamma" aria-hidden="true"></span>Gamma</td><td class="num">26–80</td><td>Awake activity, ketamine (about 25–32 Hz), muscle artefact</td></tr>
+</tbody></table></div>
+
+<div class="table-wrap" data-show-scheme="lee">
+<table>
+<caption>Lee et al. 2021<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>. These are the five conventional bands. There is no slow band, and the published scheme leaves 12–14 Hz unassigned.</caption>
+<thead><tr><th>Band</th><th class="num">Range (Hz)</th><th>Typical anaesthetic meaning</th></tr></thead>
+<tbody>
+<tr><td><span class="band b-delta" aria-hidden="true"></span>Delta</td><td class="num">&lt; 4</td><td>Includes what Purdon calls slow (&lt; 1 Hz). The slowing seen with GABAergic anaesthesia</td></tr>
+<tr><td><span class="band b-theta" aria-hidden="true"></span>Theta</td><td class="num">4–8</td><td>Volatile agents at about 1 MAC or more. Lee et al. also discuss theta changes in chronic pain</td></tr>
+<tr><td><span class="band b-alpha" aria-hidden="true"></span>Alpha</td><td class="num">8–12</td><td>Thalamocortical alpha. Its power falls with age and is a candidate marker of the "vulnerable brain"</td></tr>
+<tr><td><span class="band b-beta" aria-hidden="true"></span>Beta</td><td class="num">14–32</td><td>Awake, sedation, arousal</td></tr>
+<tr><td><span class="band b-gamma" aria-hidden="true"></span>Gamma</td><td class="num">&gt; 32</td><td>Awake activity, muscle artefact</td></tr>
+</tbody></table></div>
+
+<div class="note"><strong>Why the schemes differ, and why it matters</strong>
+<p>Band edges are conventions. The physiology does not change when the boundary moves. In practice, though, a band-power number on a monitor, a research paper or the <a href="under-the-hood.html">companion script</a> only means something if you know which edges were used. GE Entropy, for example, uses its own ranges: 0.8–32 Hz for state entropy and 0.8–47 Hz for response entropy<sup class="ref">[<a href="references.html#r-viertio2004" title="Viertiö-Oja H, Maja V, Särkelä M, et al. Description of the Entropy algorithm as applied in the Datex-Ohmeda S/5 Entropy Module. Acta Anaest">38</a>]</sup>. When you compare numbers, check the definitions first.</p></div>
+
+<h2>Amplitude, power and decibels</h2>
+<p>The raw EEG is a voltage, measured in microvolts (µV), that swings around zero over time. To compare rhythms we use <strong>power</strong>, which is amplitude squared (µV²). Power is always positive, and it is the quantity spectral analysis produces<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>.</p>
+<p>Power in the EEG varies over several orders of magnitude between frequencies, so it is shown on a logarithmic scale in <strong>decibels</strong>: dB = 10 × log₁₀(power)<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>. Two rules of thumb are enough for the bedside:</p>
+<ul>
+<li>+10 dB means 10 times the power, which is about 3 times the amplitude.</li>
+<li>+3 dB means roughly double the power.</li>
+</ul>
+<p>"Frequency-band power" is the power summed across one band. When a paper says "frontal alpha power fell by 3 dB", the alpha rhythm on the forehead has about halved in power<sup class="ref">[<a href="references.html#r-shao2020" title="Shao YR, Kahali P, Houle TT, et al. Low frontal alpha power is associated with the propensity for burst suppression: an electroencephalogram">25</a>]</sup>.</p>
+
+<h2>The spectrum</h2>
+<p>A stretch of EEG can be broken down into the sine waves that make it up. This is Fourier analysis, usually done with a fast Fourier transform (FFT). The result is a <strong>power spectrum</strong>: frequency on the horizontal axis, power on the vertical. It shows at a glance which rhythms are present in a stretch of signal, which is very hard to judge by eye from the raw trace<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>,<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>.</p>
+<figure class="fig-wide"><img data-show-scheme="purdon" src="img/spectrum_anatomy_purdon.png" alt="A raw EEG trace, its slow-delta and alpha components after filtering, and its power spectrum with the frequency bands shaded and the median frequency and SEF95 marked (Purdon band definitions)" loading="lazy"><img data-show-scheme="lee" src="img/spectrum_anatomy_lee.png" alt="A raw EEG trace, its slow-delta and alpha components after filtering, and its power spectrum with the frequency bands shaded and the median frequency and SEF95 marked (Lee band definitions)" loading="lazy"><figcaption><strong>From trace to spectrum.</strong> (A) Ten seconds of propofol-like EEG. (B) The same trace band-pass filtered into its two dominant rhythms. (C) Its spectrum: two peaks, one slow-delta and one alpha, are the propofol signature. The dashed lines mark the median frequency (MF) and the spectral edge frequency (SEF95). The layout follows Purdon et al. 2015, Fig. 3<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>.<span class="synthetic"> Synthetic signal generated for teaching (<a href="under-the-hood.html#figures">how</a>).</span></figcaption></figure>
+
+<h3>Median frequency and spectral edge frequency</h3>
+<p>Two single numbers summarise where the power sits in a spectrum:</p>
+<ul>
+<li><strong>Median frequency (MF):</strong> half the power lies below this frequency and half above.</li>
+<li><strong>Spectral edge frequency (SEF95):</strong> 95% of the power lies below this frequency<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>.</li>
+</ul>
+<p>Most anaesthetics slow the EEG, moving power to lower frequencies, so MF and SEF95 fall as the patient goes deeper<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>. Both numbers depend on the frequency range they are calculated over. Purdon used 0.1–30 Hz, while the figures here and the companion script use 0.5–45 Hz. <strong>What a given shift means also depends on the drug.</strong> Ketamine moves power <em>up</em> the spectrum, and dexmedetomidine produces very low values in a patient you can wake by talking to them (<a href="drug-signatures.html">Module 3</a>).</p>
+
+<h2>The spectrogram, or density spectral array</h2>
+<p>A single spectrum describes a few seconds. To follow an anaesthetic, the spectrum is recalculated every second or two and the results are placed side by side. In the <strong>density spectral array (DSA)</strong>, time runs along the horizontal axis, frequency up the vertical axis, and power is shown as colour, from cold blue (low) to hot red (high)<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>,<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>. The older 3-D "compressed spectral array" draws the same data as a landscape. Purdon et al. call the 2-D view simply the spectrogram, and this site uses "DSA" and "spectrogram" interchangeably.</p>
+<figure class="fig-wide"><img src="img/case_timeline.png" alt="A one-hour density spectral array showing an awake baseline, induction, a short period of burst suppression, propofol maintenance with an alpha band, an incision response, sevoflurane with theta filling in, and emergence" loading="lazy"><figcaption><strong>An anaesthetic from start to finish on the DSA.</strong> Look for the broadband activity of the awake brain, the slow-delta band after the bolus, vertical stripes of burst suppression, the slow-delta and alpha bands of maintenance, a brief loss of alpha with rising beta at incision, theta filling the gap between delta and alpha when the volatile reaches about 1 MAC, and the "zipper" opening on emergence as slow and alpha fade and beta and gamma return. White lines show SEF95 (solid) and median frequency (dashed). Note that SEF95 jumps about during burst suppression.<span class="synthetic"> Synthetic signal generated for teaching (<a href="under-the-hood.html#figures">how</a>).</span></figcaption></figure>
+<div class="note pitfall"><strong>Monitors draw it differently</strong>
+<p>Some devices run time horizontally and others vertically. Colour scales also differ between devices. Before reading a DSA in theatre, find out which axis is time on your monitor and what the colours mean<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>. SedLine shows left and right hemispheres as mirrored DSAs.</p></div>
+
+<h2>Putting the pieces together</h2>
+<p>The raw trace, the spectrum and the DSA are three views of the same signal. The raw trace is closest to reality and shows burst suppression and artefacts best. The spectrum shows what is happening now. The DSA shows the trend and how quickly things are changing. Neither the spectrum nor the DSA replaces the raw trace<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>,<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>. <a href="raw-eeg.html">Module 2</a> is about reading the raw trace.</p>
+
+<div class="advanced-block">
+<h3><span class="lvl adv">Advanced</span> How good is the spectrum?</h3>
+<p>Any spectrum estimated from a short, noisy window involves trade-offs. The FFT-based methods used by monitors and by the companion script (Welch's method) average several windowed segments to reduce noise. Purdon's group uses <strong>multitaper</strong> spectral estimation, which uses several orthogonal tapers on the same data and gives nearly optimal statistical properties: high resolution with low variance. This makes drug signatures sharper, although no commercial monitor displayed multitaper spectrograms at the time of that review<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>,<a href="references.html#r-babadi2014" title="Babadi B, Brown EN. A review of multitaper spectral analysis. IEEE Trans Biomed Eng. 2014;61(5):1555–1564.">42</a>]</sup>. See <a href="under-the-hood.html">Under the hood</a> for window length and frequency resolution.</p>
+</div>
+
+</article>
+<nav class="pager" aria-label="Course pages"><a href="index.html"><span>Previous</span>Start here</a><a href="raw-eeg.html" style="text-align:right"><span>Next</span>Reading the raw EEG and recognising artefacts</a></nav>
+</main>
+</div>
+<footer class="site-foot">
+  <p>For education only. This is not a clinical protocol and does not replace your monitor's instructions for use, your department's guidelines or clinical judgement. Every EEG image on this site is synthetic unless stated otherwise.</p>
+  <p>Page last reviewed 2026-10-02. Content licensed <a href="about.html#licence">CC BY-NC-SA 4.0</a>. Found an error or new evidence? See <a href="about.html#contribute">how to contribute</a>.</p>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

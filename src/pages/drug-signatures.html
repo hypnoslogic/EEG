@@ -1,0 +1,96 @@
+<!--
+title: Drug signatures
+nav: Drug signatures
+module: 3
+description: How propofol, the volatile agents, ketamine, dexmedetomidine and nitrous oxide each produce a distinct, mechanism-linked EEG signature.
+reviewed: 2026-10-02
+-->
+<h1>Drug signatures</h1>
+<p class="meta">Module 3 · about 25 minutes · {{basic}} with an {{adv}} section on spindles</p>
+
+<section class="objectives" aria-labelledby="obj">
+<h2 id="obj">By the end of this page you should be able to</h2>
+<ul>
+<li>Explain how different classes of anaesthetic produce distinct EEG signatures. {{lo:EF1}}</li>
+<li>Recognise the raw EEG and DSA changes produced by each agent. {{lo:RW12}}</li>
+<li>Describe how drug combinations alter these patterns. {{lo:EF7}}</li>
+<li>Advanced: define spindles and distinguish them from alpha. {{lo:AN1}} {{lo:AN4}} {{lo:AN12}}</li>
+</ul>
+</section>
+
+<p>Processed indices assume that the same number means the same depth of unconsciousness whatever drug you give. That assumption does not hold. Anaesthetics act on different molecular targets in different circuits and produce different brain states, and those states are visible in the EEG{{cite:purdon2015}}.</p>
+
+<div class="table-wrap">
+<table>
+<caption>Summary of the signatures in Purdon et al. 2015{{cite:purdon2015}}, with notes on the indices from the boot camp{{cite:sbi2025}}.</caption>
+<thead><tr><th>Drug</th><th>Main target</th><th>Signature (frontal EEG)</th><th>What the index does</th></tr></thead>
+<tbody>
+<tr><td>Propofol</td><td>GABA<sub>A</sub> (cortex, thalamic reticular nucleus, brainstem arousal centres)</td><td>Sedation: beta. Unconscious: slow-delta plus coherent alpha. High dose: burst suppression</td><td>Behaves as designed. The indices were built mainly on GABAergic data</td></tr>
+<tr><td>Sevoflurane, isoflurane, desflurane</td><td>GABA<sub>A</sub> plus other targets</td><td>Below 1 MAC: like propofol. At 1 MAC or more: theta fills in, giving even power from slow to alpha</td><td>Generally as designed</td></tr>
+<tr><td>Ketamine</td><td>NMDA receptors on inhibitory interneurons</td><td>Beta-gamma at about 25–32 Hz with irregular slow waves</td><td>May rise even though the patient is unresponsive</td></tr>
+<tr><td>Dexmedetomidine</td><td>α<sub>2</sub> receptors on locus coeruleus neurons</td><td>Light: slow-delta plus 9–15 Hz spindles. Deeper: large slow-delta</td><td>May fall very low in a patient who can easily be roused</td></tr>
+<tr><td>Nitrous oxide</td><td>NMDA</td><td>Beta-gamma. A transient large slow-delta when switching to high-flow N₂O</td><td>May rise, or fall briefly during the switch</td></tr>
+</tbody></table></div>
+
+<h2>Propofol</h2>
+<p>Propofol enhances GABA<sub>A</sub>-mediated inhibition at three main sites: cortical interneuron-to-pyramidal synapses, the thalamic reticular nucleus, and the inhibitory projections from the hypothalamic pre-optic area to the brainstem and hypothalamic arousal centres. Cortex and thalamus are tightly interconnected, so this inhibition does not silence the circuits. Instead it sets up oscillations{{cite:purdon2015}}.</p>
+<ul>
+<li><strong>Sedation and paradoxical excitation</strong> give organised beta (and gamma) oscillations, usually with some slow-delta.</li>
+<li><strong>A bolus induction</strong> gives large slow-delta waves within seconds, from the drug's action on the brainstem arousal centres.</li>
+<li><strong>Unconsciousness in the surgical plane</strong> gives slow-delta plus alpha. The alpha is <em>coherent</em> across the frontal cortex and is thought to reflect a thalamocortical loop that blocks normal thalamocortical communication. The slow waves are <em>incoherent</em> and break communication within the cortex, because neurons can only fire in narrow windows set by the local slow-wave phase. Together these probably explain why the patient is unconscious{{cite:purdon2015}}.</li>
+<li><strong>Higher doses</strong> give burst suppression, and eventually an isoelectric EEG.</li>
+<li><strong>Emergence</strong> gives the zipper: alpha and slow-delta fade and beta and gamma return.</li>
+</ul>
+{{sfig:drug_propofol|Propofol: raw trace with slow waves and alpha, spectrum with peaks in slow-delta and alpha, and a stable five-minute DSA with two horizontal bands|<strong>Propofol, surgical plane.</strong> Raw trace, spectrum and DSA, modelled on Purdon et al. 2015, Figs. 3 and 6{{cite:purdon2015}}.}}
+
+<h2>The volatile agents</h2>
+<p>Below 1 MAC, sevoflurane produces strong alpha and slow-delta oscillations that look very like propofol. This suggests enhanced GABAergic inhibition is the main mechanism{{cite:purdon2015,akeju2014sevo}}. At about 1 MAC and above, <strong>theta oscillations fill the gap</strong> between delta and alpha, giving fairly even power from slow through alpha. As the concentration falls, theta disappears first. Isoflurane and desflurane behave similarly{{cite:purdon2015}}.</p>
+{{sfig:drug_sevo|Sevoflurane below 1 MAC looks like propofol. At 1 MAC or more, theta fills in between delta and alpha|<strong>Sevoflurane below and at or above 1 MAC.</strong> When the volatile concentration rises, look for the theta band filling in. Modelled on Purdon et al. 2015, Fig. 12{{cite:purdon2015}}.}}
+<div class="note key"><strong>Clinical use</strong>
+<p>When you see theta filling in on a volatile anaesthetic, the patient is at a more profound level of unconsciousness and immobility, and you may have room to turn the vaporiser down{{cite:purdon2015}}.</p></div>
+
+<h2>Ketamine</h2>
+<p>Ketamine blocks NMDA receptors. At low and moderate doses it acts preferentially on inhibitory interneurons, whose channels are more often open. The result is <em>disinhibition</em>: downstream excitatory neurons become more active, which explains the rise in cerebral metabolism, the hallucinations and the dissociation. At higher doses the NMDA receptors on excitatory neurons are blocked too, and consciousness is lost{{cite:purdon2015}}.</p>
+<p>Its EEG signature is active rather than slow: <strong>high-beta and low-gamma oscillations at about 25–32 Hz</strong>, which in Purdon's example began about two minutes after dosing, together with slow waves that are less regular than with propofol{{cite:purdon2015}}.</p>
+{{sfig:drug_ketamine|Ketamine: fast low-amplitude activity, a spectral peak near 30 Hz, and a DSA band in the high beta and low gamma range|<strong>Ketamine.</strong> The 25–32 Hz band pushes SEF95 up even though the patient is unresponsive. Modelled on Purdon et al. 2015, Fig. 9{{cite:purdon2015}}.}}
+<div class="note pitfall"><strong>Indices can mislead</strong>
+<p>Index algorithms were developed mainly on GABAergic drugs, where "slower" means "deeper". Ketamine's fast oscillations can push the index up even when the hypnotic level is deeper, though the size of the effect depends on dose and background anaesthetic{{cite:sbi2025}}. Do not deepen propofol or volatile to "treat" a ketamine-raised number without checking the raw EEG and DSA.</p></div>
+
+<h2>Dexmedetomidine</h2>
+<p>Dexmedetomidine acts on α<sub>2</sub> receptors on neurons projecting from the locus coeruleus and reduces noradrenaline release. That removes inhibition of the pre-optic area, which in turn inhibits the arousal centres. This is the pathway that starts natural non-REM sleep, so dexmedetomidine sedation looks like sleep on the EEG{{cite:purdon2015}}.</p>
+<ul>
+<li><strong>Lighter sedation</strong> shows slow-delta oscillations plus <strong>spindles</strong>: bursts of 9–15 Hz activity lasting 1–2 s, similar to stage N2 sleep. They are much weaker than propofol alpha.</li>
+<li><strong>Deeper sedation</strong>: the spindles disappear and slow-delta grows, similar to N3 (slow-wave) sleep{{cite:purdon2015,akeju2014dex}}.</li>
+</ul>
+{{sfig:drug_dex|Dexmedetomidine: light sedation with slow-delta and intermittent spindles, and deeper sedation with large slow-delta and no spindles|<strong>Dexmedetomidine, lighter and deeper.</strong> Spindles appear as short streaks on the DSA, not as a continuous band. Modelled on Purdon et al. 2015, Fig. 11{{cite:purdon2015}}.}}
+<div class="note pitfall"><strong>Low index, rousable patient</strong>
+<p>Dexmedetomidine can give large slow waves and very low index values, yet the patient wakes easily when spoken to or touched. The low number describes a <em>sleep-like</em> state, not general anaesthesia{{cite:purdon2015}}.</p></div>
+
+<h2>Nitrous oxide</h2>
+<p>Nitrous oxide on its own is not potent enough for general anaesthesia and is normally used as an adjunct. It is associated with beta and gamma oscillations{{cite:purdon2015}}. A distinctive pattern appears when switching from a volatile to high-flow, high-concentration N₂O (over 70%) near the end of a case. Within a few minutes, <strong>very large slow-delta waves appear and power above about 5 Hz almost disappears</strong> for several minutes. The usual beta-gamma pattern then takes over{{cite:purdon2015}}. The mechanism is unknown. One possibility is NMDA blockade of excitatory brainstem inputs to the thalamus and basal forebrain.</p>
+{{sfig:drug_n2o|Nitrous oxide: a large slow-delta transition with almost no power above 5 Hz, then established nitrous oxide with beta-gamma activity|<strong>Nitrous oxide.</strong> The transition (top) and the established state (bottom). Modelled on Purdon et al. 2015, Fig. 13{{cite:purdon2015}}.}}
+
+<h2>Drug combinations</h2>
+<p>In practice drugs are combined, and the EEG shows the blend{{cite:delphi2026}}. Some general principles:</p>
+<ul>
+<li>The GABAergic agent (propofol or volatile) usually sets the background pattern of slow-delta plus alpha.</li>
+<li>Adding ketamine to a GABAergic anaesthetic can shift the alpha peak to a higher frequency and add fast activity. Purdon's review cites studies showing this{{cite:purdon2015}}.</li>
+<li>Adding N₂O near the end of a case can produce the transient slow-delta described above{{cite:purdon2015}}.</li>
+<li>Opioids and analgesia change the EEG indirectly, by changing how the brain responds to noxious stimuli (<a href="in-theatre.html#nociception">Module 5</a>).</li>
+</ul>
+<div class="note"><strong>Planned content</strong>
+<p>Purdon and colleagues published a Part II that deals specifically with drug combinations and patient management. It is listed as a candidate for this page on the <a href="roadmap.html">roadmap</a>.</p></div>
+
+<h2>Why one number can't describe them all</h2>
+{{fig:same_number_different_brain.png|Three EEGs and spectra: propofol with SEF95 around 10 Hz, ketamine around 30 Hz, and dexmedetomidine around 3 Hz|<strong>Three very different brain states.</strong> The propofol and ketamine patients are both unconscious, yet their SEF95 differs threefold. The dexmedetomidine patient has the lowest SEF95 but is the most easily roused. Any single number derived from the spectrum has to blur these differences. See also <a href="processed-eeg.html">Module 4</a>.}}
+
+<div class="advanced-block">
+<h3>{{adv}} Spindles and alpha: what's the difference?</h3>
+<p>Both are thought to come from thalamocortical loops, and both lie roughly between 9 and 15 Hz, so the terms are easily confused ({{lo:AN12}}). The differences:</p>
+<ul>
+<li><strong>Time course.</strong> Propofol frontal alpha is <em>continuous</em> and highly coherent. Dexmedetomidine and sleep spindles are <em>brief</em> (1–2 s) and episodic{{cite:purdon2015}}.</li>
+<li><strong>Power.</strong> Dexmedetomidine spindles carry much less power than propofol alpha. On the same colour scale they look like faint streaks rather than a solid band{{cite:purdon2015}}.</li>
+<li><strong>Meaning.</strong> Sleep spindles mark stage N2 sleep, a lighter state than slow-wave sleep. Dexmedetomidine spindles fit with light sedation{{cite:purdon2015}}.</li>
+</ul>
+<p>To spot spindles in the raw trace ({{lo:AN4}}), look for a waxing and waning run of sinusoidal waves at about 12–14 Hz lasting one to two seconds. Each one is spindle-shaped, rising and falling in amplitude, against a slow-wave background.</p>
+</div>

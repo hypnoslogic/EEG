@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-ZA" data-scheme="purdon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Under the hood — EEG for Anaesthetists</title>
+<meta name="description" content="Welch spectral estimation, window length versus frequency resolution, sampling rate, how this site&#x27;s synthetic figures were made, and the companion real-time analysis script.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var s=localStorage.getItem("eeg-scheme");if(s==="lee"||s==="purdon")document.documentElement.dataset.scheme=s;}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <a class="brand" href="index.html">EEG for Anaesthetists <span>· an open teaching resource</span></a>
+  <div class="scheme">
+    <span id="scheme-label">Band definitions</span>
+    <div role="radiogroup" aria-labelledby="scheme-label">
+      <button type="button" role="radio" data-scheme-btn="purdon" aria-checked="true">Purdon 2015</button>
+      <button type="button" role="radio" data-scheme-btn="lee" aria-checked="false">Lee 2021</button>
+    </div>
+  </div>
+  <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu</button>
+</header>
+<div class="layout">
+<nav class="site-nav" id="site-nav" aria-label="Site"><ul><li><a href="index.html">Start here</a></li></ul><h2>Course</h2><ol><li><a href="fundamentals.html">Fundamentals</a></li><li><a href="raw-eeg.html">Raw EEG &amp; artefacts</a></li><li><a href="drug-signatures.html">Drug signatures</a></li><li><a href="processed-eeg.html">Processed EEG</a></li><li><a href="in-theatre.html">Using EEG in theatre</a></li><li><a href="evidence.html">Evidence</a></li><li><a href="under-the-hood.html" aria-current="page">Under the hood</a></li></ol><h2>Reference</h2><ul><li><a href="curriculum.html">Curriculum map</a></li><li><a href="further-learning.html">Further learning</a></li><li><a href="references.html">References</a></li><li><a href="roadmap.html">Roadmap &amp; changelog</a></li><li><a href="about.html">About &amp; contributing</a></li></ul></nav>
+<main id="main">
+<article class="prose-root">
+
+<h1>Under the hood</h1>
+<p class="meta">Module 7 · optional · <span class="lvl adv">Advanced</span></p>
+
+<section class="objectives" aria-labelledby="obj">
+<h2 id="obj">By the end of this page you should be able to</h2>
+<ul>
+<li>Explain how a spectrum is estimated from a short window and what limits its resolution. <span class="lo">Delphi <a href="curriculum.html#PR3">PR3</a></span> <span class="lo">Delphi <a href="curriculum.html#QT1">QT1</a></span></li>
+<li>Recognise how sampling rate and analysis settings shape what a monitor can show. <span class="lo">Delphi <a href="curriculum.html#FD14">FD14</a></span></li>
+<li>Reproduce or extend the figures on this site, and run spectral analysis on your own monitor's raw EEG. <span class="lo">Delphi <a href="curriculum.html#LL6">LL6</a></span></li>
+</ul>
+</section>
+
+<h2>From samples to a spectrum: Welch's method</h2>
+<p>A monitor samples the EEG voltage many times a second. To estimate the spectrum of the last few seconds:</p>
+<ol class="algo">
+<li>Take a window of recent samples, for example 4 s.</li>
+<li>Cut it into overlapping <strong>segments</strong>, for example 2 s long with 50% overlap.</li>
+<li>Taper each segment with a window function (Hann) so the abrupt cut at its edges does not leak false power into other frequencies.</li>
+<li>Take the FFT of each segment and square the magnitude to get power.</li>
+<li><strong>Average</strong> the segments. Averaging reduces noise in the estimate at the cost of using more data.</li>
+</ol>
+<p>The DSA is simply this calculation repeated every second or so and stacked side by side. The companion script uses exactly this method, and so do this site's figures.</p>
+
+<h2 id="resolution">Window length versus frequency resolution</h2>
+<p>The frequency resolution of a spectrum is Δf = 1 / segment length. A 2 s segment resolves 0.5 Hz steps. A 0.5 s segment only resolves 2 Hz steps and cannot separate the slow (&lt; 1 Hz) and delta bands. Longer segments resolve frequency better but blur changes over time, which is part of why indices lag<sup class="ref">[<a href="references.html#r-pilge2006" title="Pilge S, Zanner R, Schneider G, et al. Time delay of index calculation: analysis of cerebral state, bispectral, and Narcotrend indices. Anes">41</a>]</sup>.</p>
+<figure class="fig-wide"><img src="img/window_resolution.png" alt="Three spectra of the same signal with two alpha rhythms at 10 and 11.5 Hz, computed with 0.5, 2 and 8 second segments; only the longer segments separate the two peaks" loading="lazy"><figcaption><strong>Resolution is set by segment length.</strong> Two alpha rhythms 1.5 Hz apart merge with 0.5 s segments and separate clearly only with longer ones.<span class="synthetic"> Synthetic signal generated for teaching (<a href="under-the-hood.html#figures">how</a>).</span></figcaption></figure>
+<div class="note"><strong>Trade-off</strong>
+<p>Multitaper methods, as used by Purdon's group, get more out of a short window, giving good resolution with low variance<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>,<a href="references.html#r-babadi2014" title="Babadi B, Brown EN. A review of multitaper spectral analysis. IEEE Trans Biomed Eng. 2014;61(5):1555–1564.">42</a>]</sup>. For a bedside display, 2 s segments within a 4 s window, recalculated every second, is a reasonable compromise and is the default in the companion script.</p></div>
+
+<h2>Sampling rate and what you can see</h2>
+<p>A signal sampled at <em>f</em><sub>s</sub> can only represent frequencies below <em>f</em><sub>s</sub>/2 (the Nyquist frequency). Purdon's recordings were made at 250 Hz<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>. If a monitor exports its EEG waveform at about 100 Hz, which is plausible for some serial interfaces but should be checked for your device, then:</p>
+<ul>
+<li>nothing above about 50 Hz can be represented, so the 50 Hz mains line cannot be seen, or removed with a notch filter, in the exported data;</li>
+<li>the upper end of Entropy's RE range (up to 47 Hz) is close to the limit<sup class="ref">[<a href="references.html#r-viertio2004" title="Viertiö-Oja H, Maja V, Särkelä M, et al. Description of the Entropy algorithm as applied in the Datex-Ohmeda S/5 Entropy Module. Acta Anaest">38</a>]</sup>;</li>
+<li>everything an anaesthetist needs for drug signatures (0.1–35 Hz) is comfortably within range.</li>
+</ul>
+
+<h2 id="script">The companion real-time script</h2>
+<p><code>eeg_rt_spectrum.py</code> reads the raw EEG waveform from a GE/Datex-Ohmeda monitor with an Entropy module over the RS232 computer interface and displays, in real time<sup class="ref">[<a href="references.html#r-rtscript" title="eeg_rt_spectrum.py — real-time Welch spectral analysis of raw EEG from a GE/Datex-Ohmeda monitor (Entropy module) via the RS232 computer int">50</a>]</sup>:</p>
+<ul>
+<li>the raw trace (4–60 s), optionally band-pass filtered to show up to three rhythms;</li>
+<li>a Welch spectrum with shaded bands and SEF95;</li>
+<li>a 10-minute DSA, with a choice of colour maps including the classic "jet";</li>
+<li>relative band power, and switchable band schemes (standard, Purdon, split α/β, Entropy SE/RE, or custom);</li>
+<li>optional CSV logging of raw samples and band powers.</li>
+</ul>
+<p>Run <code>python eeg_rt_spectrum.py --simulate</code> to try it without a monitor. <a href="tools/eeg_rt_spectrum.py">Download the script</a>.</p>
+<div class="note pitfall"><strong>Research and education only</strong>
+<p>The script is not a medical device and must not guide clinical care. Its protocol constants, including the EEG sample rate and µV scaling, follow open-source implementations and must be checked against GE's computer interface specification for your monitor and software version. Logged recordings are patient data: get the appropriate ethical approval and consent, and de-identify before sharing.</p></div>
+
+<h2 id="figures">How the figures were made</h2>
+<p>Every trace, spectrum and DSA on this site was produced by <a href="tools/make_figures.py"><code>tools/make_figures.py</code></a>. It is synthetic, so no patient data is involved and every image can be shared freely.</p>
+<ul>
+<li>Each rhythm is <strong>band-limited noise</strong>: white noise passed through a gentle band-pass filter and slowly amplitude-modulated, so it waxes and wanes like real EEG rather than looking like a pure sine wave. A 1/f background sits underneath.</li>
+<li>Each "state" (awake, propofol, sevoflurane ≥ 1 MAC, ketamine and so on) mixes rhythms in the proportions described in the cited literature<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>,<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>.</li>
+<li>The analysis is the same as the companion script (Welch, Hann, 2 s segments, SEF95 over 0.5–45 Hz). The colour scheme is the script's light theme, and every DSA uses the same fixed −20 to +20 dB scale so drugs can be compared directly.</li>
+<li>Band-shaded figures are generated twice, once for each band scheme, which is what the switch at the top of the page swaps between.</li>
+</ul>
+<div class="note"><strong>Limits of synthetic EEG</strong>
+<p>These are idealised cartoons. Real recordings are noisier and vary more between patients, and drug combinations blur the signatures. Use the <a href="further-learning.html">clinical examples linked here</a> to see real EEG.</p></div>
+<p>To regenerate the figures: <code>pip install numpy scipy matplotlib</code>, then <code>python tools/make_figures.py</code>. To rebuild the pages after editing content: <code>python build.py</code> (see <a href="about.html#contribute">contributing</a>).</p>
+
+</article>
+<nav class="pager" aria-label="Course pages"><a href="evidence.html"><span>Previous</span>The evidence</a><a href="curriculum.html" style="text-align:right"><span>Next</span>Curriculum map</a></nav>
+</main>
+</div>
+<footer class="site-foot">
+  <p>For education only. This is not a clinical protocol and does not replace your monitor's instructions for use, your department's guidelines or clinical judgement. Every EEG image on this site is synthetic unless stated otherwise.</p>
+  <p>Page last reviewed 2026-10-02. Content licensed <a href="about.html#licence">CC BY-NC-SA 4.0</a>. Found an error or new evidence? See <a href="about.html#contribute">how to contribute</a>.</p>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

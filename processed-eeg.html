@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en-ZA" data-scheme="purdon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Processed EEG: Entropy, BIS and SedLine — EEG for Anaesthetists</title>
+<meta name="description" content="What GE Entropy, BIS and Masimo SedLine compute, what their numbers and auxiliary parameters mean, and why you should never trust the index alone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var s=localStorage.getItem("eeg-scheme");if(s==="lee"||s==="purdon")document.documentElement.dataset.scheme=s;}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <a class="brand" href="index.html">EEG for Anaesthetists <span>· an open teaching resource</span></a>
+  <div class="scheme">
+    <span id="scheme-label">Band definitions</span>
+    <div role="radiogroup" aria-labelledby="scheme-label">
+      <button type="button" role="radio" data-scheme-btn="purdon" aria-checked="true">Purdon 2015</button>
+      <button type="button" role="radio" data-scheme-btn="lee" aria-checked="false">Lee 2021</button>
+    </div>
+  </div>
+  <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu</button>
+</header>
+<div class="layout">
+<nav class="site-nav" id="site-nav" aria-label="Site"><ul><li><a href="index.html">Start here</a></li></ul><h2>Course</h2><ol><li><a href="fundamentals.html">Fundamentals</a></li><li><a href="raw-eeg.html">Raw EEG &amp; artefacts</a></li><li><a href="drug-signatures.html">Drug signatures</a></li><li><a href="processed-eeg.html" aria-current="page">Processed EEG</a></li><li><a href="in-theatre.html">Using EEG in theatre</a></li><li><a href="evidence.html">Evidence</a></li><li><a href="under-the-hood.html">Under the hood</a></li></ol><h2>Reference</h2><ul><li><a href="curriculum.html">Curriculum map</a></li><li><a href="further-learning.html">Further learning</a></li><li><a href="references.html">References</a></li><li><a href="roadmap.html">Roadmap &amp; changelog</a></li><li><a href="about.html">About &amp; contributing</a></li></ul></nav>
+<main id="main">
+<article class="prose-root">
+
+<h1>Processed EEG: Entropy, BIS and SedLine</h1>
+<p class="meta">Module 4 · about 20 minutes · <span class="lvl basic">Basic</span> with an <span class="lvl adv">Advanced</span> section</p>
+
+<section class="objectives" aria-labelledby="obj">
+<h2 id="obj">By the end of this page you should be able to</h2>
+<ul>
+<li>Describe the concepts behind processed EEG, focusing on reading the spectrum rather than on how an index is built. <span class="lo">Delphi <a href="curriculum.html#PR4">PR4</a></span></li>
+<li>Explain SEF, EMG, burst suppression ratio and signal quality index. <span class="lo">Delphi <a href="curriculum.html#PR6">PR6</a></span></li>
+<li>Compare the strengths and limitations of processed and raw EEG. <span class="lo">Delphi <a href="curriculum.html#PR5">PR5</a></span></li>
+<li>Critique EEG indices and recognise when they are unreliable. <span class="lo">Delphi <a href="curriculum.html#PR14">PR14</a></span></li>
+<li>Use processed EEG to guide anaesthesia alongside the raw trace and DSA. <span class="lo">Delphi <a href="curriculum.html#PR2">PR2</a></span></li>
+</ul>
+</section>
+
+<div class="note key"><strong>The message of this page</strong>
+<p><strong>Don't trust the number alone.</strong> An index is an alarm that prompts you to look, not the answer. Every monitor shows the raw EEG and a DSA as well, and using them avoids or reduces most of the index's known failings<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>. When five commercial monitors were given <em>identical</em> EEG signals they gave discordant recommendations (below)<sup class="ref">[<a href="references.html#r-hight2023" title="Hight D, Kreuzer M, Ugen G, et al. Five commercial ‘depth of anaesthesia’ monitors provide discordant clinical recommendations in response t">11</a>]</sup>. If you can read the raw EEG, you can check any of them.</p></div>
+
+<h2>What processing does</h2>
+<p>All the major monitors follow roughly the same steps:</p>
+<ol class="algo">
+<li><strong>Acquire</strong> frontal EEG through a disposable sensor and check impedance.</li>
+<li><strong>Clean</strong> it by detecting and rejecting artefact, and grade the signal quality.</li>
+<li><strong>Extract features</strong>: band powers, spectral edge, measures of order or entropy, and detection of suppression.</li>
+<li><strong>Combine</strong> these with a proprietary algorithm into a dimensionless 0–100 scale, where lower means deeper.</li>
+<li><strong>Smooth</strong> the result over time. Each index reflects roughly the last 15–30 s of EEG, plus processing delay, so it lags behind the brain<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>,<a href="references.html#r-pilge2006" title="Pilge S, Zanner R, Schneider G, et al. Time delay of index calculation: analysis of cerebral state, bispectral, and Narcotrend indices. Anes">41</a>]</sup>.</li>
+</ol>
+<p>The indices were developed by recording EEG and behavioural responses in cohorts of adult patients, often given GABAergic drugs, and fitting algorithms to them. Some used regression, one used classification of visually scored EEG, and one used the entropy of the signal<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>. Most algorithms are proprietary.</p>
+
+<h2>The three monitors</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th></th><th>GE Entropy (E-Entropy / CARESCAPE)</th><th>BIS (Medtronic)</th><th>SedLine (Masimo)</th></tr></thead>
+<tbody>
+<tr><th>Main number(s)</th><td><strong>State entropy (SE)</strong>, 0–91, from 0.8–32 Hz, mainly EEG.<br><strong>Response entropy (RE)</strong>, 0–100, from 0.8–47 Hz, EEG plus frontal EMG</td><td><strong>Bispectral index</strong>, 0–100</td><td><strong>Patient state index (PSI)</strong>, 0–100</td></tr>
+<tr><th>Principle</th><td>Spectral entropy, or how "disordered" the spectrum is. Awake EEG spreads power across many frequencies (high entropy). Anaesthetised EEG concentrates it in a few rhythms (low entropy)<sup class="ref">[<a href="references.html#r-viertio2004" title="Viertiö-Oja H, Maja V, Särkelä M, et al. Description of the Entropy algorithm as applied in the Datex-Ohmeda S/5 Entropy Module. Acta Anaest">38</a>]</sup></td><td>A weighted combination of spectral, bispectral and burst-suppression features (proprietary)</td><td>Multivariate EEG features, including frontal–posterior and left–right relationships, from four channels (proprietary)<sup class="ref">[<a href="references.html#r-prichep2004" title="Prichep LS, Gugino LD, John ER, et al. The Patient State Index as an indicator of the level of hypnosis under general anaesthesia. Br J Anae">39</a>]</sup></td></tr>
+<tr><th>Usual general-anaesthesia range*</th><td>SE and RE 40–60</td><td>40–60</td><td>25–50</td></tr>
+<tr><th>Built-in clues</th><td>A gap between RE and SE suggests frontal EMG (arousal, nociception or lightening neuromuscular block). Burst suppression ratio</td><td>SQI, EMG bar, suppression ratio (SR), SEF, DSA</td><td>Bilateral DSA (left and right), SEF per side, EMG, suppression ratio, artefact indicator</td></tr>
+<tr><th>Montage</th><td>Single-channel frontal sensor</td><td>Single or bilateral frontal sensor</td><td>Four channels at about Fp1, Fp2, F7 and F8<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup></td></tr>
+</tbody></table>
+<caption>*Usual ranges are from the manufacturers' guidance and may differ between software versions. Always check the instructions for use of the device in front of you. The PSI and BIS scales are not interchangeable<sup class="ref">[<a href="references.html#r-chen2002" title="Chen X, Tang J, White PF, et al. A comparison of patient state index and bispectral index values during the perioperative period. Anesth Ana">40</a>]</sup>.</caption>
+</div>
+
+<h2>The extra numbers on the screen</h2>
+<dl class="dl-grid">
+<dt>SQI</dt><dd><strong>Signal quality index.</strong> If it is low, ignore the index until you have fixed the signal.</dd>
+<dt>EMG</dt><dd>Frontal muscle activity, which raises indices. It goes away under neuromuscular block, which can make an index fall with no change in hypnosis<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>. On Entropy, read the RE–SE gap.</dd>
+<dt>SR / BSR</dt><dd><strong>Suppression ratio:</strong> the percentage of a recent window in which the EEG was suppressed. Any non-zero value means look at the raw trace. Automated detection can still miss suppression<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>.</dd>
+<dt>SEF95</dt><dd>The frequency below which 95% of power lies (<a href="fundamentals.html">Module 1</a>). It is useful as a trend but depends on the drug, and it becomes erratic during burst suppression.</dd>
+<dt>DSA</dt><dd>The density spectral array. Read it at least as often as the number.</dd>
+</dl>
+
+<h2>Where indices mislead</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Situation</th><th>What can happen to the index</th><th>What to look at instead</th></tr></thead>
+<tbody>
+<tr><td>EMG (arousal, light anaesthesia, block wearing off)</td><td>Falsely high. It may fall when you give a relaxant</td><td>Raw trace for fine fast activity. Entropy RE–SE gap. EMG bar</td></tr>
+<tr><td>Ketamine, nitrous oxide</td><td>Higher than the hypnotic level suggests<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>,<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup></td><td>Is there a 25–32 Hz band on the DSA? Is the GABAergic slow-delta plus alpha background present?</td></tr>
+<tr><td>Dexmedetomidine</td><td>Low, yet the patient is rousable<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup></td><td>Spindles and slow-delta, not alpha. Response to stimulation</td></tr>
+<tr><td>Older age</td><td>Indices are not adjusted for age<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>. Lower EEG amplitude, especially in the alpha band<sup class="ref">[<a href="references.html#r-purdon2015age" title="Purdon PL, Pavone KJ, Akeju O, et al. The ageing brain: age-dependent changes in the electroencephalogram during propofol and sevoflurane ge">26</a>]</sup></td><td>Raw amplitude and alpha power. Watch for suppression</td></tr>
+<tr><td>Children</td><td>Indices developed in adults are less reliable<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup></td><td>Age-appropriate patterns (planned paediatric section)</td></tr>
+<tr><td>Burst suppression, especially low-voltage</td><td>May be missed or underestimated<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>,<a href="references.html#r-delphi2026" title="Berger-Estilita J, Baron Shahaf D, Barreto Chang OL, et al. Consensus document on electroencephalography education in anaesthesiology: defin">3</a>]</sup></td><td>Raw trace: flat stretches. DSA: vertical stripes</td></tr>
+<tr><td>Fast changes (induction, bolus, sudden arousal)</td><td>Lags by tens of seconds<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>,<a href="references.html#r-pilge2006" title="Pilge S, Zanner R, Schneider G, et al. Time delay of index calculation: analysis of cerebral state, bispectral, and Narcotrend indices. Anes">41</a>]</sup></td><td>Raw trace, which changes in real time</td></tr>
+<tr><td>Diathermy, warming devices, other equipment</td><td>Blank, or falsely high or low<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup></td><td>Timing and the raw trace (<a href="raw-eeg.html#artefacts">ShARP</a>)</td></tr>
+</tbody></table></div>
+
+<h2>Five monitors, one EEG, different answers</h2>
+<p>Hight and colleagues took 52 recorded EEG segments showing patterns of lightening anaesthesia, like those seen during emergence, and played the <em>identical</em> signals into five commercial monitors: BIS, Entropy, qCON, SedLine and Narcotrend. The monitors gave discordant clinical recommendations in response to the same signals, so a clinician following one device could reasonably act differently from a clinician following another<sup class="ref">[<a href="references.html#r-hight2023" title="Hight D, Kreuzer M, Ugen G, et al. Five commercial ‘depth of anaesthesia’ monitors provide discordant clinical recommendations in response t">11</a>]</sup>.</p>
+<p>The lesson for this course: each index is one manufacturer's interpretation of the EEG. If you look at the EEG yourself, you are no longer dependent on any single algorithm.</p>
+<figure class="fig-wide"><img src="img/same_number_different_brain.png" alt="Three EEGs with SEF95 values of about 10, 30 and 3 Hz from propofol, ketamine and dexmedetomidine" loading="lazy"><figcaption><strong>Why algorithms disagree.</strong> Compressing a whole spectrum into one number discards information, and different algorithms discard different information. Propofol, ketamine and dexmedetomidine produce very different spectra. No single number can rank them correctly by depth of anaesthesia.<span class="synthetic"> Synthetic signal generated for teaching (<a href="under-the-hood.html#figures">how</a>).</span></figcaption></figure>
+
+<h2>A routine for every glance at the monitor</h2>
+<p>This sequence follows the boot camp's algorithmic approach<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>:</p>
+<ol class="algo">
+<li><strong>Quality.</strong> Is the SQI good? Are the electrodes on? Is diathermy running?</li>
+<li><strong>Raw trace.</strong> What pattern is it: awake, beta, slow-delta plus alpha, theta-filled, burst suppression? Is there EMG or another artefact?</li>
+<li><strong>DSA.</strong> Where is the power, and how has it changed over the last few minutes? Is there an alpha band? Stripes? Rising beta?</li>
+<li><strong>Numbers.</strong> Do the index, SR and SEF agree with what you have just seen? If not, believe the EEG and look for the reason (drug, EMG, age, artefact).</li>
+<li><strong>Clinical context.</strong> Drugs and doses, end-tidal or TCI concentration, haemodynamics, surgical stimulus. Then act (<a href="in-theatre.html">Module 5</a>).</li>
+</ol>
+
+<div class="advanced-block">
+<h3><span class="lvl adv">Advanced</span> Limits of quantitative EEG metrics</h3>
+<p>Every quantitative feature has assumptions built in (<span class="lo">Delphi <a href="curriculum.html#QT1">QT1</a></span>):</p>
+<ul>
+<li><strong>Band definitions:</strong> relative band power depends on where the edges are and what the "total" range is (<a href="fundamentals.html#bands">compare the two schemes</a>).</li>
+<li><strong>Window length:</strong> longer windows resolve frequency better but follow changes more slowly (<a href="under-the-hood.html">Module 7</a>).</li>
+<li><strong>Reference range:</strong> SEF and median frequency change if you calculate them over 0.1–30 Hz instead of 0.5–45 Hz.</li>
+<li><strong>Non-stationarity:</strong> burst suppression and spindles break the assumption that the signal is stable within a window.</li>
+<li><strong>Population calibration:</strong> an algorithm fitted to adults given GABAergic drugs carries its biases into children, older adults and other drugs<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>.</li>
+</ul>
+</div>
+
+</article>
+<nav class="pager" aria-label="Course pages"><a href="drug-signatures.html"><span>Previous</span>Drug signatures</a><a href="in-theatre.html" style="text-align:right"><span>Next</span>Using EEG in theatre</a></nav>
+</main>
+</div>
+<footer class="site-foot">
+  <p>For education only. This is not a clinical protocol and does not replace your monitor's instructions for use, your department's guidelines or clinical judgement. Every EEG image on this site is synthetic unless stated otherwise.</p>
+  <p>Page last reviewed 2026-10-02. Content licensed <a href="about.html#licence">CC BY-NC-SA 4.0</a>. Found an error or new evidence? See <a href="about.html#contribute">how to contribute</a>.</p>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en-ZA" data-scheme="purdon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading the raw EEG and recognising artefacts — EEG for Anaesthetists</title>
+<meta name="description" content="The raw EEG from awake to isoelectric, the phases of an anaesthetic, burst suppression, electrode set-up, and the ShARP approach to artefacts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var s=localStorage.getItem("eeg-scheme");if(s==="lee"||s==="purdon")document.documentElement.dataset.scheme=s;}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <a class="brand" href="index.html">EEG for Anaesthetists <span>· an open teaching resource</span></a>
+  <div class="scheme">
+    <span id="scheme-label">Band definitions</span>
+    <div role="radiogroup" aria-labelledby="scheme-label">
+      <button type="button" role="radio" data-scheme-btn="purdon" aria-checked="true">Purdon 2015</button>
+      <button type="button" role="radio" data-scheme-btn="lee" aria-checked="false">Lee 2021</button>
+    </div>
+  </div>
+  <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu</button>
+</header>
+<div class="layout">
+<nav class="site-nav" id="site-nav" aria-label="Site"><ul><li><a href="index.html">Start here</a></li></ul><h2>Course</h2><ol><li><a href="fundamentals.html">Fundamentals</a></li><li><a href="raw-eeg.html" aria-current="page">Raw EEG &amp; artefacts</a></li><li><a href="drug-signatures.html">Drug signatures</a></li><li><a href="processed-eeg.html">Processed EEG</a></li><li><a href="in-theatre.html">Using EEG in theatre</a></li><li><a href="evidence.html">Evidence</a></li><li><a href="under-the-hood.html">Under the hood</a></li></ol><h2>Reference</h2><ul><li><a href="curriculum.html">Curriculum map</a></li><li><a href="further-learning.html">Further learning</a></li><li><a href="references.html">References</a></li><li><a href="roadmap.html">Roadmap &amp; changelog</a></li><li><a href="about.html">About &amp; contributing</a></li></ul></nav>
+<main id="main">
+<article class="prose-root">
+
+<h1>Reading the raw EEG and recognising artefacts</h1>
+<p class="meta">Module 2 · about 25 minutes · <span class="lvl basic">Basic</span></p>
+
+<section class="objectives" aria-labelledby="obj">
+<h2 id="obj">By the end of this page you should be able to</h2>
+<ul>
+<li>Apply electrodes correctly and troubleshoot common technical problems. <span class="lo">Delphi <a href="curriculum.html#FD4">FD4</a></span> <span class="lo">Delphi <a href="curriculum.html#FD5">FD5</a></span> <span class="lo">Delphi <a href="curriculum.html#FD14">FD14</a></span></li>
+<li>Identify the fundamental raw EEG patterns and how they change from wakefulness to deep anaesthesia. <span class="lo">Delphi <a href="curriculum.html#RW4">RW4</a></span> <span class="lo">Delphi <a href="curriculum.html#RW5">RW5</a></span> <span class="lo">Delphi <a href="curriculum.html#FD12">FD12</a></span></li>
+<li>Recognise the raw EEG of each phase of an anaesthetic, from the pre-induction baseline to emergence. <span class="lo">Delphi <a href="curriculum.html#RW7">RW7</a></span> <span class="lo">Delphi <a href="curriculum.html#RW13">RW13</a></span></li>
+<li>Recognise burst suppression and tell it apart from spikes. <span class="lo">Delphi <a href="curriculum.html#RW11">RW11</a></span></li>
+<li>Identify common artefacts, separate technical from physiological ones, and fix them where possible. <span class="lo">Delphi <a href="curriculum.html#AR1">AR1</a></span> <span class="lo">Delphi <a href="curriculum.html#AR2">AR2</a></span> <span class="lo">Delphi <a href="curriculum.html#AR3">AR3</a></span> <span class="lo">Delphi <a href="curriculum.html#AR5">AR5</a></span></li>
+</ul>
+</section>
+
+<h2>Getting a good signal</h2>
+<p>A spectrum or an index can only be as good as the signal behind it. The boot camp teaches set-up as a skill in its own right: choose the site, prepare the skin, attach the electrodes properly and keep the recording quality good for the whole case<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>.</p>
+<ol class="algo">
+<li><strong>Place the sensor before induction.</strong> Follow the manufacturer's positions on the forehead and temple for your sensor (Entropy, BIS or SedLine). The sensors differ in the number and position of electrodes.</li>
+<li><strong>Prepare the skin.</strong> Clean off oil and make-up, dry the skin, and press each electrode down firmly. In research recordings Purdon's group required electrode impedance below 5 kΩ<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>. Your monitor will run its own impedance or sensor check, so let it finish.</li>
+<li><strong>Check signal quality.</strong> Look at the signal quality index (SQI) or equivalent, and at the raw trace itself. A clean awake trace is low amplitude and fast. Large, irregular swings before induction usually mean an artefact.</li>
+<li><strong>Record a baseline.</strong> A minute of awake EEG gives you a reference for this patient. This matters most in older patients, whose EEG amplitude is lower<sup class="ref">[<a href="references.html#r-delphi2026" title="Berger-Estilita J, Baron Shahaf D, Barreto Chang OL, et al. Consensus document on electroencephalography education in anaesthesiology: defin">3</a>,<a href="references.html#r-purdon2015age" title="Purdon PL, Pavone KJ, Akeju O, et al. The ageing brain: age-dependent changes in the electroencephalogram during propofol and sevoflurane ge">26</a>]</sup>.</li>
+<li><strong>If the forehead is in the surgical field</strong>, alternative montages are possible, for example mandibular or nasal placements, which the boot camp demonstrates<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>. Remember that reference values were developed with standard placement.</li>
+</ol>
+<p>Learn the basic display controls for your device: sweep speed (time per screen), amplitude scale (µV per division) and filters. Changing the amplitude scale is often all it takes to make burst suppression or low-voltage EEG visible<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>.</p>
+
+<h2>From awake to isoelectric</h2>
+<p>As GABAergic anaesthesia deepens, the raw EEG changes in a fairly predictable sequence. <strong>Amplitude rises and the dominant frequency falls.</strong> At the deepest levels this gives way to burst suppression and finally a flat, isoelectric trace<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>,<a href="references.html#r-delphi2026" title="Berger-Estilita J, Baron Shahaf D, Barreto Chang OL, et al. Consensus document on electroencephalography education in anaesthesiology: defin">3</a>]</sup>.</p>
+<figure class="fig-wide"><img src="img/gallery_states.png" alt="Six ten-second EEG traces on the same scale: awake, sedation, surgical-plane slow-delta plus alpha, induction slow waves, burst suppression and isoelectric" loading="lazy"><figcaption><strong>Raw EEG states on one scale</strong> (50 µV and 1 s bars). Modelled on Purdon et al. 2015, Fig. 2<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>. The anaesthetised states (C to E) are several times larger than the awake trace (A).<span class="synthetic"> Synthetic signal generated for teaching (<a href="under-the-hood.html#figures">how</a>).</span></figcaption></figure>
+<div class="table-wrap">
+<table>
+<thead><tr><th>State</th><th>What the raw trace looks like</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td>Awake, eyes open</td><td>Low amplitude, fast, irregular beta and gamma</td><td>Conscious. Use as the baseline</td></tr>
+<tr><td>Sedation and paradoxical excitation</td><td>Organised beta oscillations, sometimes larger than when awake</td><td>Low-dose propofol. The patient may be disinhibited or moving</td></tr>
+<tr><td>Unconscious, surgical plane</td><td>Large slow waves with alpha "riding" on them</td><td>The target pattern for propofol and the volatile agents</td></tr>
+<tr><td>Induction bolus</td><td>Very large slow and delta waves, appearing 10–30 s after a propofol bolus</td><td>Loss of responsiveness, apnoea, atonia</td></tr>
+<tr><td>Burst suppression</td><td>Bursts of activity separated by flat periods</td><td>Profoundly deep anaesthesia, or hypothermia, ischaemia or another brain insult</td></tr>
+<tr><td>Isoelectric</td><td>Flat</td><td>Deepest anaesthesia, coma or profound hypothermia</td></tr>
+</tbody></table></div>
+
+<h2>The phases of an anaesthetic</h2>
+<h3>Baseline</h3>
+<p>Before induction, record the awake EEG and confirm the signal is clean. It helps you recognise later artefacts, and it shows you how much amplitude this particular patient has to begin with.</p>
+<h3>Induction</h3>
+<p>After a propofol bolus the EEG changes within 10–30 seconds, from low-amplitude fast activity to high-amplitude slow and delta oscillations. This coincides with loss of responsiveness, apnoea, loss of the oculocephalic reflex and atonia<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>. A further bolus can deepen the slow oscillation or turn it into burst suppression. Elderly patients can go straight into burst suppression after a standard induction dose<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>.</p>
+<h3>Maintenance</h3>
+<p>Over the next few minutes the induction pattern evolves into slow-delta oscillations with a strong frontal alpha rhythm. This pattern persists through a stable propofol infusion or a volatile anaesthetic in the surgical plane<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>.</p>
+<h3>Emergence</h3>
+<p>When the anaesthetic is turned off, slow-delta and alpha power fade and are gradually replaced by lower-amplitude beta and gamma activity. In the raw trace, the waves get faster and smaller. On the DSA this looks like a <em>zipper opening</em> as the bands pull apart<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>. Brainstem reflexes return roughly from caudal to rostral, so breathing and gagging come back before corneal and oculocephalic reflexes.</p>
+
+<h2 id="bs">Burst suppression</h2>
+<p>Burst suppression alternates bursts of electrical activity with periods of near-silence. Enough propofol, barbiturate or volatile agent will produce it, and so will hypothermia, cerebral ischaemia and severe brain injury. It appears at lower anaesthetic doses in older patients<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>,<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>. When the dose rises, the suppressed periods lengthen until the EEG becomes isoelectric. The bursts themselves often carry the pattern that came before, such as slow and alpha oscillations under propofol<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>.</p>
+<figure class="fig-wide"><img src="img/burst_suppression.png" alt="Sixty seconds of burst suppression with plus and minus 5 microvolt threshold lines and a bar showing which periods are classed as suppressed" loading="lazy"><figcaption><strong>Quantifying burst suppression.</strong> The suppression ratio (SR or BSR) is the fraction of time in a window during which the EEG is suppressed. Windows of 15–60 s are typical<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>. Here a ±5 µV amplitude threshold, as used to illustrate Purdon et al. 2015, Fig. 8<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>, separates bursts from suppression.<span class="synthetic"> Synthetic signal generated for teaching (<a href="under-the-hood.html#figures">how</a>).</span></figcaption></figure>
+<div class="note pitfall"><strong>Don't rely on the machine to find it</strong>
+<p>Automated burst suppression detection differs between manufacturers and is unreliable. It can miss suppression, especially when amplitudes are low, as they often are in older patients. Look at the raw trace and the DSA yourself. Burst suppression shows on the DSA as vertical stripes. This is one of the main reasons the boot camp teaches raw EEG reading<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>,<a href="references.html#r-delphi2026" title="Berger-Estilita J, Baron Shahaf D, Barreto Chang OL, et al. Consensus document on electroencephalography education in anaesthesiology: defin">3</a>]</sup>.</p></div>
+<p><strong>Spikes are different.</strong> A spike is a single sharp transient that stands out from the background. It is not a burst separated by flat EEG. On a frontal anaesthesia montage, most spikes are artefacts (ECG, electrode pops, movement): apply ShARP, below. Recognising true epileptiform activity is an advanced outcome (<span class="lo">Delphi <a href="curriculum.html#AC7">AC7</a></span>) and is planned for a later module.</p>
+<div class="advanced-block">
+<h3><span class="lvl adv">Advanced</span> Beyond the ratio</h3>
+<p>A ratio over a fixed window reacts slowly and can be noisy. The <em>burst suppression probability</em> uses state-space methods to estimate, moment by moment, the probability that the brain is suppressed. It was developed to track burst suppression in real time and to support closed-loop control of medically induced coma<sup class="ref">[<a href="references.html#r-purdon2015" title="Purdon PL, Sampson A, Pavone KJ, Brown EN. Clinical electroencephalography for anesthesiologists: Part I: background and basic signatures. A">1</a>]</sup>.</p>
+</div>
+
+<h2 id="artefacts">Artefacts</h2>
+<p>Theatre is electrically noisy and patients move. Artefacts can be <strong>technical</strong> (diathermy, mains interference, a lifting electrode, warming devices) or <strong>physiological</strong> (muscle, the heart, eye movements)<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>,<a href="references.html#r-delphi2026" title="Berger-Estilita J, Baron Shahaf D, Barreto Chang OL, et al. Consensus document on electroencephalography education in anaesthesiology: defin">3</a>]</sup>. They can make an index disappear, or worse, push it falsely high or low<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>.</p>
+<h3>The ShARP approach</h3>
+<p>The Safe Brain Initiative boot camp teaches a four-part check for any suspicious waveform<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>:</p>
+<dl class="dl-grid">
+<dt>Sh — Shape</dt><dd>Sinusoidal, spiky, square or a step? Smooth or jagged?</dd>
+<dt>A — Amplitude</dt><dd>Similar to the background EEG, much larger (blinks, diathermy) or tiny?</dd>
+<dt>R — Rhythm</dt><dd>Regular, such as heart rate or exactly 50 Hz, or irregular?</dd>
+<dt>P — Point in time</dt><dd>Constant, or tied to an event such as diathermy, warming, positioning, laryngoscopy or emergence?</dd>
+</dl>
+<p>For example, a spiky shape at about the amplitude of the EEG, recurring regularly one to two times a second throughout the case, is probably <strong>ECG</strong><sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>.</p>
+<figure class="fig-wide"><img src="img/artefacts.png" alt="Six artefacts, each shown as a ten-second raw trace and a sixty-second DSA: muscle, ECG, eye blinks, 50 Hz mains, diathermy and an electrode pop" loading="lazy"><figcaption><strong>Common artefacts on the raw trace (left) and the DSA (right).</strong> The dashed line on each DSA marks 47 Hz, the top of the GE Entropy response-entropy range<sup class="ref">[<a href="references.html#r-viertio2004" title="Viertiö-Oja H, Maja V, Särkelä M, et al. Description of the Entropy algorithm as applied in the Datex-Ohmeda S/5 Entropy Module. Acta Anaest">38</a>]</sup>. 50 Hz mains interference is only visible if the monitor samples faster than 100 Hz.<span class="synthetic"> Synthetic signal generated for teaching (<a href="under-the-hood.html#figures">how</a>).</span></figcaption></figure>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Artefact</th><th>Type</th><th>ShARP clues</th><th>Effect on the processed numbers</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>Muscle (EMG)</td><td>Physiological</td><td>Fine, jagged, high-frequency activity riding on the EEG. Broad power above about 30 Hz, often appearing with arousal, light anaesthesia or wearing-off neuromuscular block</td><td>Raises indices. On Entropy, RE rises above SE. Giving neuromuscular block removes EMG and can lower an index without any change in hypnotic depth</td><td>Think about arousal and nociception first, then about the level of block. Do not deepen the hypnotic reflexively</td></tr>
+<tr><td>ECG</td><td>Physiological</td><td>Spiky, regular, at heart rate, constant throughout</td><td>Usually minor. It may distort low-amplitude EEG and suppression detection</td><td>Check the trace against the ECG. Reposition the sensor if it is severe</td></tr>
+<tr><td>Eye movement and blinks</td><td>Physiological</td><td>Large, slow, smooth deflections, mainly when the patient is awake or emerging</td><td>Adds false slow-delta power</td><td>Interpret low-frequency power cautiously at induction and emergence</td></tr>
+<tr><td>Mains (50 Hz in South Africa)</td><td>Technical</td><td>Thick, perfectly regular band. A single bright line at 50 Hz on the DSA</td><td>Can affect high-frequency features</td><td>Check electrode contact, cables and nearby equipment</td></tr>
+<tr><td>Diathermy</td><td>Technical</td><td>Huge, saturating noise, exactly while the diathermy is active</td><td>The index is usually rejected or blanked, and the SQI drops</td><td>Wait. Do not act on numbers recorded during diathermy</td></tr>
+<tr><td>Electrode pop or lift</td><td>Technical</td><td>Sudden step with slow recovery, or a flat or noisy channel</td><td>Gaps, false flat stretches or false suppression</td><td>Press the electrodes down, check impedance, replace the sensor</td></tr>
+<tr><td>Forced-air warmers and other devices</td><td>Technical</td><td>New activity that starts when a device is switched on</td><td>Indices can read falsely high</td><td>Note the timing. Switch the device off briefly to test</td></tr>
+</tbody></table>
+<caption>Compiled from the boot camp's artefact teaching and the case reports it cites<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>. Entropy ranges from Viertiö-Oja et al.<sup class="ref">[<a href="references.html#r-viertio2004" title="Viertiö-Oja H, Maja V, Särkelä M, et al. Description of the Entropy algorithm as applied in the Datex-Ohmeda S/5 Entropy Module. Acta Anaest">38</a>]</sup></caption>
+</div>
+<div class="note key"><strong>A good habit</strong>
+<p>Whenever an index changes suddenly, look at the raw trace before you change the anaesthetic. Is it artefact? Is it EMG? Has the signal quality dropped? Only then ask whether the brain has changed<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>.</p></div>
+
+</article>
+<nav class="pager" aria-label="Course pages"><a href="fundamentals.html"><span>Previous</span>Where the EEG comes from and how it is analysed</a><a href="drug-signatures.html" style="text-align:right"><span>Next</span>Drug signatures</a></nav>
+</main>
+</div>
+<footer class="site-foot">
+  <p>For education only. This is not a clinical protocol and does not replace your monitor's instructions for use, your department's guidelines or clinical judgement. Every EEG image on this site is synthetic unless stated otherwise.</p>
+  <p>Page last reviewed 2026-10-02. Content licensed <a href="about.html#licence">CC BY-NC-SA 4.0</a>. Found an error or new evidence? See <a href="about.html#contribute">how to contribute</a>.</p>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

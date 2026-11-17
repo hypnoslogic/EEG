@@ -1,0 +1,34 @@
+<!--
+title: About this resource
+nav: About & contributing
+description: Purpose, authorship, licence, disclaimer and how to contribute to or update this open EEG teaching resource.
+reviewed: 2026-10-02
+-->
+<h1>About this resource</h1>
+
+<h2>Purpose</h2>
+<p>An open, referenced collection of teaching material on raw and processed EEG for anaesthetists at all levels, from registrars and medical officers to consultants. It is organised around the international Delphi learning outcomes{{cite:delphi2026}} and the structure of the Safe Brain Initiative boot camp{{cite:sbi2025}}. It is intended to be updated as new evidence appears.</p>
+
+<h2>Curator</h2>
+<p>Compiled and maintained by Michael-Jon Rosslee. Initial drafting was assisted by an AI model (Claude, Anthropic). All content is the curator's responsibility and should be checked against the cited primary sources.</p>
+
+<h2 id="licence">Licence</h2>
+<ul>
+<li><strong>Text and original figures:</strong> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0</a>. You may share and adapt the material for non-commercial teaching, with attribution, under the same licence. The NonCommercial term keeps the site compatible with material adapted from CC BY-NC sources{{cite:lee2021}}.</li>
+<li><strong>Code</strong> (<code>build.py</code>, <code>tools/</code>, <code>assets/site.js</code>): licensed by the curator. The MIT licence is suggested. See the repository's LICENCE files.</li>
+<li><strong>Third-party material</strong> is credited on the <a href="references.html">references page</a>, and keeps its original licence.</li>
+</ul>
+
+<h2>Disclaimer</h2>
+<p>For education only. This is not a clinical protocol and does not replace device instructions for use, departmental guidelines or clinical judgement. Index ranges and device features change between software versions. Check your own equipment. The companion script is not a medical device.</p>
+
+<h2 id="contribute">Contributing and updating</h2>
+<p>The site is plain HTML generated from source fragments, so it can be hosted free on GitHub Pages and updated by anyone with access to the repository.</p>
+<ol class="algo">
+<li><strong>Edit content</strong> in <code>src/pages/*.html</code>. Use the macros described at the top of <code>build.py</code> for citations, learning-outcome tags and figures.</li>
+<li><strong>Add references</strong> to the <em>end</em> of <code>src/references.json</code>, giving a key, full citation, DOI and link, plus a licence note if relevant.</li>
+<li><strong>Rebuild</strong> with <code>python build.py</code>. It stops with an error if a citation key or macro is wrong.</li>
+<li><strong>Update the page's <code>reviewed</code> date</strong> and add a line to the <a href="roadmap.html#changelog">changelog</a>.</li>
+<li><strong>Commit and push.</strong> GitHub Pages republishes automatically.</li>
+</ol>
+<p>Suggestions, corrections and new evidence are welcome through the repository's issue tracker. Contributions from teachers, researchers, engineers and neuroscientists fit the Delphi advanced outcomes on mentorship, collaboration and spreading EEG knowledge ({{lo:MT2}} {{lo:LL2}} {{lo:LL6}}).</p>

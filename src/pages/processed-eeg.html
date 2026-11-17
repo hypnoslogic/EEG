@@ -1,0 +1,99 @@
+<!--
+title: Processed EEG: Entropy, BIS and SedLine
+nav: Processed EEG
+module: 4
+description: What GE Entropy, BIS and Masimo SedLine compute, what their numbers and auxiliary parameters mean, and why you should never trust the index alone.
+reviewed: 2026-10-02
+-->
+<h1>Processed EEG: Entropy, BIS and SedLine</h1>
+<p class="meta">Module 4 · about 20 minutes · {{basic}} with an {{adv}} section</p>
+
+<section class="objectives" aria-labelledby="obj">
+<h2 id="obj">By the end of this page you should be able to</h2>
+<ul>
+<li>Describe the concepts behind processed EEG, focusing on reading the spectrum rather than on how an index is built. {{lo:PR4}}</li>
+<li>Explain SEF, EMG, burst suppression ratio and signal quality index. {{lo:PR6}}</li>
+<li>Compare the strengths and limitations of processed and raw EEG. {{lo:PR5}}</li>
+<li>Critique EEG indices and recognise when they are unreliable. {{lo:PR14}}</li>
+<li>Use processed EEG to guide anaesthesia alongside the raw trace and DSA. {{lo:PR2}}</li>
+</ul>
+</section>
+
+<div class="note key"><strong>The message of this page</strong>
+<p><strong>Don't trust the number alone.</strong> An index is an alarm that prompts you to look, not the answer. Every monitor shows the raw EEG and a DSA as well, and using them avoids or reduces most of the index's known failings{{cite:sbi2025}}. When five commercial monitors were given <em>identical</em> EEG signals they gave discordant recommendations (below){{cite:hight2023}}. If you can read the raw EEG, you can check any of them.</p></div>
+
+<h2>What processing does</h2>
+<p>All the major monitors follow roughly the same steps:</p>
+<ol class="algo">
+<li><strong>Acquire</strong> frontal EEG through a disposable sensor and check impedance.</li>
+<li><strong>Clean</strong> it by detecting and rejecting artefact, and grade the signal quality.</li>
+<li><strong>Extract features</strong>: band powers, spectral edge, measures of order or entropy, and detection of suppression.</li>
+<li><strong>Combine</strong> these with a proprietary algorithm into a dimensionless 0–100 scale, where lower means deeper.</li>
+<li><strong>Smooth</strong> the result over time. Each index reflects roughly the last 15–30 s of EEG, plus processing delay, so it lags behind the brain{{cite:lee2021,pilge2006}}.</li>
+</ol>
+<p>The indices were developed by recording EEG and behavioural responses in cohorts of adult patients, often given GABAergic drugs, and fitting algorithms to them. Some used regression, one used classification of visually scored EEG, and one used the entropy of the signal{{cite:purdon2015}}. Most algorithms are proprietary.</p>
+
+<h2>The three monitors</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th></th><th>GE Entropy (E-Entropy / CARESCAPE)</th><th>BIS (Medtronic)</th><th>SedLine (Masimo)</th></tr></thead>
+<tbody>
+<tr><th>Main number(s)</th><td><strong>State entropy (SE)</strong>, 0–91, from 0.8–32 Hz, mainly EEG.<br><strong>Response entropy (RE)</strong>, 0–100, from 0.8–47 Hz, EEG plus frontal EMG</td><td><strong>Bispectral index</strong>, 0–100</td><td><strong>Patient state index (PSI)</strong>, 0–100</td></tr>
+<tr><th>Principle</th><td>Spectral entropy, or how "disordered" the spectrum is. Awake EEG spreads power across many frequencies (high entropy). Anaesthetised EEG concentrates it in a few rhythms (low entropy){{cite:viertio2004}}</td><td>A weighted combination of spectral, bispectral and burst-suppression features (proprietary)</td><td>Multivariate EEG features, including frontal–posterior and left–right relationships, from four channels (proprietary){{cite:prichep2004}}</td></tr>
+<tr><th>Usual general-anaesthesia range*</th><td>SE and RE 40–60</td><td>40–60</td><td>25–50</td></tr>
+<tr><th>Built-in clues</th><td>A gap between RE and SE suggests frontal EMG (arousal, nociception or lightening neuromuscular block). Burst suppression ratio</td><td>SQI, EMG bar, suppression ratio (SR), SEF, DSA</td><td>Bilateral DSA (left and right), SEF per side, EMG, suppression ratio, artefact indicator</td></tr>
+<tr><th>Montage</th><td>Single-channel frontal sensor</td><td>Single or bilateral frontal sensor</td><td>Four channels at about Fp1, Fp2, F7 and F8{{cite:purdon2015}}</td></tr>
+</tbody></table>
+<caption>*Usual ranges are from the manufacturers' guidance and may differ between software versions. Always check the instructions for use of the device in front of you. The PSI and BIS scales are not interchangeable{{cite:chen2002}}.</caption>
+</div>
+
+<h2>The extra numbers on the screen</h2>
+<dl class="dl-grid">
+<dt>SQI</dt><dd><strong>Signal quality index.</strong> If it is low, ignore the index until you have fixed the signal.</dd>
+<dt>EMG</dt><dd>Frontal muscle activity, which raises indices. It goes away under neuromuscular block, which can make an index fall with no change in hypnosis{{cite:sbi2025}}. On Entropy, read the RE–SE gap.</dd>
+<dt>SR / BSR</dt><dd><strong>Suppression ratio:</strong> the percentage of a recent window in which the EEG was suppressed. Any non-zero value means look at the raw trace. Automated detection can still miss suppression{{cite:sbi2025}}.</dd>
+<dt>SEF95</dt><dd>The frequency below which 95% of power lies (<a href="fundamentals.html">Module 1</a>). It is useful as a trend but depends on the drug, and it becomes erratic during burst suppression.</dd>
+<dt>DSA</dt><dd>The density spectral array. Read it at least as often as the number.</dd>
+</dl>
+
+<h2>Where indices mislead</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Situation</th><th>What can happen to the index</th><th>What to look at instead</th></tr></thead>
+<tbody>
+<tr><td>EMG (arousal, light anaesthesia, block wearing off)</td><td>Falsely high. It may fall when you give a relaxant</td><td>Raw trace for fine fast activity. Entropy RE–SE gap. EMG bar</td></tr>
+<tr><td>Ketamine, nitrous oxide</td><td>Higher than the hypnotic level suggests{{cite:purdon2015,sbi2025}}</td><td>Is there a 25–32 Hz band on the DSA? Is the GABAergic slow-delta plus alpha background present?</td></tr>
+<tr><td>Dexmedetomidine</td><td>Low, yet the patient is rousable{{cite:purdon2015}}</td><td>Spindles and slow-delta, not alpha. Response to stimulation</td></tr>
+<tr><td>Older age</td><td>Indices are not adjusted for age{{cite:sbi2025}}. Lower EEG amplitude, especially in the alpha band{{cite:purdon2015age}}</td><td>Raw amplitude and alpha power. Watch for suppression</td></tr>
+<tr><td>Children</td><td>Indices developed in adults are less reliable{{cite:purdon2015}}</td><td>Age-appropriate patterns (planned paediatric section)</td></tr>
+<tr><td>Burst suppression, especially low-voltage</td><td>May be missed or underestimated{{cite:sbi2025,delphi2026}}</td><td>Raw trace: flat stretches. DSA: vertical stripes</td></tr>
+<tr><td>Fast changes (induction, bolus, sudden arousal)</td><td>Lags by tens of seconds{{cite:lee2021,pilge2006}}</td><td>Raw trace, which changes in real time</td></tr>
+<tr><td>Diathermy, warming devices, other equipment</td><td>Blank, or falsely high or low{{cite:sbi2025}}</td><td>Timing and the raw trace (<a href="raw-eeg.html#artefacts">ShARP</a>)</td></tr>
+</tbody></table></div>
+
+<h2>Five monitors, one EEG, different answers</h2>
+<p>Hight and colleagues took 52 recorded EEG segments showing patterns of lightening anaesthesia, like those seen during emergence, and played the <em>identical</em> signals into five commercial monitors: BIS, Entropy, qCON, SedLine and Narcotrend. The monitors gave discordant clinical recommendations in response to the same signals, so a clinician following one device could reasonably act differently from a clinician following another{{cite:hight2023}}.</p>
+<p>The lesson for this course: each index is one manufacturer's interpretation of the EEG. If you look at the EEG yourself, you are no longer dependent on any single algorithm.</p>
+{{fig:same_number_different_brain.png|Three EEGs with SEF95 values of about 10, 30 and 3 Hz from propofol, ketamine and dexmedetomidine|<strong>Why algorithms disagree.</strong> Compressing a whole spectrum into one number discards information, and different algorithms discard different information. Propofol, ketamine and dexmedetomidine produce very different spectra. No single number can rank them correctly by depth of anaesthesia.}}
+
+<h2>A routine for every glance at the monitor</h2>
+<p>This sequence follows the boot camp's algorithmic approach{{cite:sbi2025}}:</p>
+<ol class="algo">
+<li><strong>Quality.</strong> Is the SQI good? Are the electrodes on? Is diathermy running?</li>
+<li><strong>Raw trace.</strong> What pattern is it: awake, beta, slow-delta plus alpha, theta-filled, burst suppression? Is there EMG or another artefact?</li>
+<li><strong>DSA.</strong> Where is the power, and how has it changed over the last few minutes? Is there an alpha band? Stripes? Rising beta?</li>
+<li><strong>Numbers.</strong> Do the index, SR and SEF agree with what you have just seen? If not, believe the EEG and look for the reason (drug, EMG, age, artefact).</li>
+<li><strong>Clinical context.</strong> Drugs and doses, end-tidal or TCI concentration, haemodynamics, surgical stimulus. Then act (<a href="in-theatre.html">Module 5</a>).</li>
+</ol>
+
+<div class="advanced-block">
+<h3>{{adv}} Limits of quantitative EEG metrics</h3>
+<p>Every quantitative feature has assumptions built in ({{lo:QT1}}):</p>
+<ul>
+<li><strong>Band definitions:</strong> relative band power depends on where the edges are and what the "total" range is (<a href="fundamentals.html#bands">compare the two schemes</a>).</li>
+<li><strong>Window length:</strong> longer windows resolve frequency better but follow changes more slowly (<a href="under-the-hood.html">Module 7</a>).</li>
+<li><strong>Reference range:</strong> SEF and median frequency change if you calculate them over 0.1–30 Hz instead of 0.5–45 Hz.</li>
+<li><strong>Non-stationarity:</strong> burst suppression and spindles break the assumption that the signal is stable within a window.</li>
+<li><strong>Population calibration:</strong> an algorithm fitted to adults given GABAergic drugs carries its biases into children, older adults and other drugs{{cite:purdon2015}}.</li>
+</ul>
+</div>

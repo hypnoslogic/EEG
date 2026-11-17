@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-ZA" data-scheme="purdon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About this resource — EEG for Anaesthetists</title>
+<meta name="description" content="Purpose, authorship, licence, disclaimer and how to contribute to or update this open EEG teaching resource.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var s=localStorage.getItem("eeg-scheme");if(s==="lee"||s==="purdon")document.documentElement.dataset.scheme=s;}catch(e){}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-head">
+  <a class="brand" href="index.html">EEG for Anaesthetists <span>· an open teaching resource</span></a>
+  <div class="scheme">
+    <span id="scheme-label">Band definitions</span>
+    <div role="radiogroup" aria-labelledby="scheme-label">
+      <button type="button" role="radio" data-scheme-btn="purdon" aria-checked="true">Purdon 2015</button>
+      <button type="button" role="radio" data-scheme-btn="lee" aria-checked="false">Lee 2021</button>
+    </div>
+  </div>
+  <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu</button>
+</header>
+<div class="layout">
+<nav class="site-nav" id="site-nav" aria-label="Site"><ul><li><a href="index.html">Start here</a></li></ul><h2>Course</h2><ol><li><a href="fundamentals.html">Fundamentals</a></li><li><a href="raw-eeg.html">Raw EEG &amp; artefacts</a></li><li><a href="drug-signatures.html">Drug signatures</a></li><li><a href="processed-eeg.html">Processed EEG</a></li><li><a href="in-theatre.html">Using EEG in theatre</a></li><li><a href="evidence.html">Evidence</a></li><li><a href="under-the-hood.html">Under the hood</a></li></ol><h2>Reference</h2><ul><li><a href="curriculum.html">Curriculum map</a></li><li><a href="further-learning.html">Further learning</a></li><li><a href="references.html">References</a></li><li><a href="roadmap.html">Roadmap &amp; changelog</a></li><li><a href="about.html" aria-current="page">About &amp; contributing</a></li></ul></nav>
+<main id="main">
+<article class="prose-root">
+
+<h1>About this resource</h1>
+
+<h2>Purpose</h2>
+<p>An open, referenced collection of teaching material on raw and processed EEG for anaesthetists at all levels, from registrars and medical officers to consultants. It is organised around the international Delphi learning outcomes<sup class="ref">[<a href="references.html#r-delphi2026" title="Berger-Estilita J, Baron Shahaf D, Barreto Chang OL, et al. Consensus document on electroencephalography education in anaesthesiology: defin">3</a>]</sup> and the structure of the Safe Brain Initiative boot camp<sup class="ref">[<a href="references.html#r-sbi2025" title="von Dincklage F, Helfrich J, Koch S, et al. Introducing the Safe Brain Initiative’s EEG boot camp for anaesthesia for standardised training ">4</a>]</sup>. It is intended to be updated as new evidence appears.</p>
+
+<h2>Curator</h2>
+<p>Compiled and maintained by Michael-Jon Rosslee. </p>
+
+<h2 id="licence">Licence</h2>
+<ul>
+<li><strong>Text and original figures:</strong> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0</a>. You may share and adapt the material for non-commercial teaching, with attribution, under the same licence. The NonCommercial term keeps the site compatible with material adapted from CC BY-NC sources<sup class="ref">[<a href="references.html#r-lee2021" title="Lee KH, Egan TD, Johnson KB. Raw and processed electroencephalography in modern anesthesia practice: a brief primer on select clinical appli">2</a>]</sup>.</li>
+<li><strong>Code</strong> (<code>build.py</code>, <code>tools/</code>, <code>assets/site.js</code>): licensed by the curator. The MIT licence is suggested. See the repository's LICENCE files.</li>
+<li><strong>Third-party material</strong> is credited on the <a href="references.html">references page</a>, and keeps its original licence.</li>
+</ul>
+
+<h2>Disclaimer</h2>
+<p>For education only. This is not a clinical protocol and does not replace device instructions for use, departmental guidelines or clinical judgement. Index ranges and device features change between software versions. Check your own equipment. The companion script is not a medical device.</p>
+
+<h2 id="contribute">Contributing and updating</h2>
+<p>The site is plain HTML generated from source fragments, so it can be hosted free on GitHub Pages and updated by anyone with access to the repository.</p>
+<ol class="algo">
+<li><strong>Edit content</strong> in <code>src/pages/*.html</code>. Use the macros described at the top of <code>build.py</code> for citations, learning-outcome tags and figures.</li>
+<li><strong>Add references</strong> to the <em>end</em> of <code>src/references.json</code>, giving a key, full citation, DOI and link, plus a licence note if relevant.</li>
+<li><strong>Rebuild</strong> with <code>python build.py</code>. It stops with an error if a citation key or macro is wrong.</li>
+<li><strong>Update the page's <code>reviewed</code> date</strong> and add a line to the <a href="roadmap.html#changelog">changelog</a>.</li>
+<li><strong>Commit and push.</strong> GitHub Pages republishes automatically.</li>
+</ol>
+<p>Suggestions, corrections and new evidence are welcome through the repository's issue tracker. Contributions from teachers, researchers, engineers and neuroscientists fit the Delphi advanced outcomes on mentorship, collaboration and spreading EEG knowledge (<span class="lo">Delphi <a href="curriculum.html#MT2">MT2</a></span> <span class="lo">Delphi <a href="curriculum.html#LL2">LL2</a></span> <span class="lo">Delphi <a href="curriculum.html#LL6">LL6</a></span>).</p>
+
+</article>
+
+</main>
+</div>
+<footer class="site-foot">
+  <p>For education only. This is not a clinical protocol and does not replace your monitor's instructions for use, your department's guidelines or clinical judgement. Every EEG image on this site is synthetic unless stated otherwise.</p>
+  <p>Page last reviewed 2026-10-02. Content licensed <a href="about.html#licence">CC BY-NC-SA 4.0</a>. Found an error or new evidence? See <a href="about.html#contribute">how to contribute</a>.</p>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>
